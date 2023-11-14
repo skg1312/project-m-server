@@ -7,7 +7,6 @@ var mongoose  = require('mongoose');
 var cors = require('cors');
 
 
-var pdf = require('./routes/pdf')
 var admin = require('./routes/admin');
 var buyer = require('./routes/buyer');
 var seller = require('./routes/seller');
@@ -17,6 +16,7 @@ var user = require('./routes/users');
 var consignment = require('./routes/consignment');
 var vechicle = require('./routes/vechicle');
 var invoice = require('./routes/invoice');
+var download = require('./routes/download')
 
 
 
@@ -51,7 +51,7 @@ app.use('/user', user);
 app.use('/consignment', consignment);
 app.use('/vechicle', vechicle);
 app.use('/invoice', invoice);
-app.use('/pdf', pdf);
+app.use('/download', download)
 
 
 // catch 404 and forward to error handler

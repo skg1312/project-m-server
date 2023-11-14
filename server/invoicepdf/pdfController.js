@@ -1,19 +1,16 @@
-//pdfController.js
-
 let pdf = require('html-pdf');
 const pug = require('pug');
 const fs = require('fs');
 
 
 exports.generatePdf = async (
-  modelName,
   info = { filename: 'pdf_file', format: 'A4' },
   result,
   callback
 ) => {
-  const fileId = info.filename + '-' + result._id + '.pdf';
-  const folderPath = modelName.toLowerCase();
-  const targetLocation = `./public/download/${folderPath}/${fileId}`;
+  // const fileId = info.filename + '-' + result._id + '.pdf';
+  const fileId = info.filename + '.pdf';
+  const targetLocation = `public/download/${fileId}`;
 
   // if file already exist then delete it
   if (fs.existsSync(targetLocation)) {
@@ -21,7 +18,7 @@ exports.generatePdf = async (
   }
 
   // render pdf html
-  const html = pug.renderFile('views/pdf/' + modelName + '.pug', {
+  const html = pug.renderFile('views/pdf/Invoice.pug', {
     model: result
   });
 
