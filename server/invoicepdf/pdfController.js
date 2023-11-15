@@ -18,9 +18,10 @@ exports.generatePdf = async (
   }
 
   // render pdf html
-  const html = pug.renderFile('views/pdf/Invoice.pug', {
-    model: result
-  });
+  // const html = pug.renderFile('views/pdf/Invoice.pug', {
+  //   model: result
+  // });
+  var html = fs.readFileSync('./views/pdf/Invoice.html', 'utf8');
 
   await pdf
     .create(html, {
@@ -29,7 +30,7 @@ exports.generatePdf = async (
       border: '12mm',
     })
     .toFile(targetLocation, function (error) {
-      if (error) return console.log('this pdf create error ' + error);
+      if (error) return console.log('this pdf create error ' + error);                                                                                       
       if (callback) callback(targetLocation);
     });
 };
