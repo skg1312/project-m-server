@@ -26,7 +26,7 @@ exports.generatePdf = async (
     .create(html, {
       format: info.format,																					
       orientation: 'portrait',
-      border: '12mm',
+      border: '1mm',
     })
     .toFile(targetLocation, function (error) {
       if (error) return console.log('this pdf create error ' + error);                                                                                       
