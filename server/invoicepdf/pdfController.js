@@ -8,20 +8,19 @@ exports.generatePdf = async (
   result,
   callback
 ) => {
-  // const fileId = info.filename + '-' + result._id + '.pdf';
-  const fileId = info.filename + '.pdf';
-  const targetLocation = `public/download/${fileId}`;
+  const fileId = info.filename + '-' + result._id + '.pdf';
+  const targetLocation = `./public/download/${fileId}`;
 
-  // if file already exist then delete it
+  // if PDF already exist, then delete it and create new PDF
   if (fs.existsSync(targetLocation)) {
     fs.unlinkSync(targetLocation);
   }
 
   // render pdf html
-  // const html = pug.renderFile('views/pdf/Invoice.pug', {
-  //   model: result
-  // });
-  var html = fs.readFileSync('./views/pdf/Invoice.html', 'utf8');
+  const html = pug.renderFile('./views/pdf/Invoice.pug', {
+    model: result
+  });
+  // var html = fs.readFileSync('./views/pdf/Invoice.html', 'utf8');
 
   await pdf
     .create(html, {

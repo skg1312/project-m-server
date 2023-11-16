@@ -74,7 +74,7 @@ const invoiceSchema = new mongoose.Schema({
         dateofloading: Date,
         startingpoint: String,
         endingpoint: String,
-    },
+    }
 });
 
 const Invoice = mongoose.model('Invoice', invoiceSchema);

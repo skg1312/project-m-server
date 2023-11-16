@@ -1151,8 +1151,8 @@ html
       .ground-floorshop-no-container
         span.ground-floorshop-no-container1
           p.ground-floorshop-no #{model.companydetails.companyofficeaddress}
-          p.ground-floorshop-no Padmawati NagarB. Bhadarna,
-          p.ground-floorshop-no JAIPUR - 302013,RAJASTHAN
+          //- p.ground-floorshop-no Padmawati NagarB. Bhadarna,
+          //- p.ground-floorshop-no JAIPUR - 302013,RAJASTHAN
           p.ground-floorshop-no
             span.gstinuin GSTIN/UIN 
             span : #{model.companydetails.companygstno} 
@@ -1163,30 +1163,30 @@ html
             span.span  : #{model.companydetails.companypincode} 
       .guru-nanak-enterprises-container
         span.ground-floorshop-no-container1
-          p.ground-floorshop-no GURU NANAK ENTERPRISES
-          p.ground-floorshop-no PALMENCLAVE Ludhiana,
-          p.ground-floorshop-no Ludhiana- 141116,Punjab
+          p.ground-floorshop-no #{model.sellerdetails.sellercompanyname}
+          p.ground-floorshop-no #{model.sellerdetails.sellercompanyaddress}
+          //- p.ground-floorshop-no Ludhiana- 141116,Punjab
           p.ground-floorshop-no
             span.gstinuin GSTIN/UIN
-            span  : 031JEPK4859NIZM 
+            span  : #{model.sellerdetails.sellercompanygstno} 
           p.state-name-rajasthan-code
             span.gstinuin State Name
-            span  : Punjab, 
+            span  : #{model.sellerdetails.sellercompanystatename} 
             span.gstinuin Code
-            span.span  : 03
+            span.span  : #{model.sellerdetails.sellercompanystatecode}
       .guru-nanak-enterprises-container2
         span.ground-floorshop-no-container1
-          p.ground-floorshop-no GURU NANAK ENTERPRISES
-          p.ground-floorshop-no PALMENCLAVE Ludhiana,
-          p.ground-floorshop-no Ludhiana- 141116,Punjab
+          p.ground-floorshop-no #{model.sellerdetails.buyercompanyname}
+          p.ground-floorshop-no #{model.sellerdetails.buyercompanyaddress}
+          //- p.ground-floorshop-no Ludhiana- 141116,Punjab
           p.ground-floorshop-no
             span.gstinuin GSTIN/UIN
-            span  : 031JEPK4859NIZM 
+            span  : #{model.sellerdetails.buyercompanygstno} 
           p.state-name-rajasthan-code
             span.gstinuin State Name
-            span  : Punjab, 
+            span  : #{model.sellerdetails.buyercompanystatename}
             span.gstinuin Code
-            span.span  : 03
+            span.span  : #{model.sellerdetails.buyercompanystatecode}
       img.line-icon(alt='' src='./public/line-47.svg')
       .line-div
       .macbook-air-2-child1
@@ -1332,7 +1332,7 @@ html
       i.disclaimer
         span disclaimer
         span.span3  
-      i.for-mahaveer-trading FOR MAHAVEER TRADING COMPANY
+      i.for-mahaveer-trading FOR #{model.companydetails.companyname}
       i.buyer buyer
       .this-is-a This is a computer generated invoice.
       i.authorized-signature Authorized Signature 
