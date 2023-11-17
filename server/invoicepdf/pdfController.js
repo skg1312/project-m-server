@@ -1,6 +1,7 @@
 let pdf = require('html-pdf');
-const pug = require('pug');
 const fs = require('fs');
+const ejs = require('ejs');
+let path = require("path");
 
 
 exports.generatePdf = async (
@@ -17,19 +18,38 @@ exports.generatePdf = async (
   }
 
   // render pdf html
-  const html = pug.renderFile('./views/pdf/Invoice.pug', {
-    model: result
-  });
-  // var html = fs.readFileSync('./views/pdf/Invoice.html', 'utf8');
+  // const html = ejs.renderFile('./views/pdf/report-template.ejs', {
+  //   invoiceData: result
+  // });
+  ejs.renderFile(path.join(__dirname, './views/', "report-template.ejs"), {invoiceData: result}, (err, data) => {
+        let options = {
+            "height": "14.25in",
+            "width": "11.25in",
+            "header": {
+                "height": "0mm"
+            },
+            "footer": {
+                "height": "0mm",
+            },
+        };
+        pdf.create(data, options).toFile(targetLocation, function (error) {
+            if (error) return console.log('this pdf create error ' + error); 
+            if (callback) callback(targetLocation);
+        });
+    // }
+});
 
-  await pdf
-    .create(html, {
-      format: info.format,																					
-      orientation: 'portrait',
-      border: '12mm',
-    })
-    .toFile(targetLocation, function (error) {
-      if (error) return console.log('this pdf create error ' + error);                                                                                       
-      if (callback) callback(targetLocation);
-    });
+
+  // await pdf
+  //   .create(html, {
+  //     format: info.format,																					
+  //     orientation: 'portrait',
+  //     border: '12mm',
+  //   })
+  //   // await pdf
+  //   // .create(html, options)    
+  //   .toFile(targetLocation, function (error) {
+  //     if (error) return console.log('this pdf create error ' + error);                                                                                       
+  //     if (callback) callback(targetLocation);
+  //   });
 };
