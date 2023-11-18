@@ -7,7 +7,7 @@ router.get('/:id', async (req, res) => {
   var invoiceId = req.params.id;
   try {
     const result = await Invoice.findById(invoiceId);
-    var companyname = result.companydetails.companyid;
+    var companyid = result.companydetails.companyid;
     
     // Throw error if no result
     if (!result) {
@@ -16,7 +16,7 @@ router.get('/:id', async (req, res) => {
 
    // Continue process if result is returned
     await custom.generatePdf(
-      { filename: companyname, format: 'A4' },
+      { filename: companyid, format: 'A4' },
       result,
       async (fileLocation) => {
         return res.download(fileLocation, (error) => {

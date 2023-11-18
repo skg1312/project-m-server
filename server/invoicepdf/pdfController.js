@@ -1,5 +1,5 @@
 let pdf = require('html-pdf');
-const pug = require('pug');
+const ejs = require('ejs');
 const fs = require('fs');
 
 
@@ -17,17 +17,32 @@ exports.generatePdf = async (
   }
 
   // render pdf html
-  const html = pug.renderFile('./views/pdf/Invoice.pug', {
-    model: result
+  ejs.renderFile('./views/pdf/report-template.ejs', {invoiceData: result}, function(err, result) {
+  // render on success
+  if (result) {
+    html = result;
+ }
+ else {
+  return console.log('An error occurred during render ejs ' + err);
+}
   });
-  // var html = fs.readFileSync('./views/pdf/Invoice.html', 'utf8');
 
-  await pdf
-    .create(html, {
-      format: info.format,																					
-      orientation: 'portrait',
-      border: '12mm',
-    })
+  let options = {
+    "height": "14.25in",
+    "width": "11.25in",
+    "header": {
+        "height": "0mm"
+    },
+    "footer": {
+        "height": "0mm",
+    },
+};
+  //  pdf.create(html, {
+  //     format: info.format,																					
+  //     orientation: 'portrait',
+  //     border: '12mm',
+  //   })
+    pdf.create(html, options)
     .toFile(targetLocation, function (error) {
       if (error) return console.log('this pdf create error ' + error);                                                                                       
       if (callback) callback(targetLocation);
