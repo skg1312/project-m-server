@@ -3,127 +3,130 @@
    <head>
     <style>
         /* Customize additional styles as needed */
-  .invoice {
-    font-family: Arial, sans-serif;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    background-color: #fff;
-   
-  }
-  
-  .shop{
-     font-family:'Times New Roman', Times, serif;
-     text-align: right;
-  }
-  
-  .center1 {
-    text-align: left;
-    font-size: small;
-  }
-  
-  .center2 {
-    text-align: left;
-    font-size: small;
-  }
-  
-  .center3 {
-    text-align: left;
-    font-size: small;
-    
-  }
-  
-  .left-align{
-    text-align: left;
-    position: absolute;
-    font-size: small;
-  
-  }
-  .qr{
-    margin-left: 430px;
-    position: absolute;
-    width: 180px;
-    height: 120px;
-    border: 1px solid black;
-  }
-  .right-align {
-    text-align: left;
-    margin-left: 320px;
-    font-size: small;
-  }
-  
-  table {
-    width: 100%;
-    font-size: small;
-  }
-  .right{
-    margin-top: -33%;
-    font-size: small;
-    text-align: left;
-    margin-left: 73.5%;
-  }
-  table, th {
-    border: 1px solid #ddd;
-  }
-  
-  th, td {
-    /* padding: 8px; */
-    text-align: left;
-  }
+        .invoice {
+         font-family: Arial, sans-serif;
+         max-width: 720px;
+         margin: 0 auto;
+         padding: 20px;
+         border: 1px solid #000000;
+         border-radius: 5px;
+         background-color: #fff;
+         
+      }
+      
+      .shop{
+         font-family:'Times New Roman', Times, serif;
+         text-align: right;
+      }
+      
+      .center1 {
+         text-align: left;
+         font-size: small;
+      }
+      
+      .center2 {
+         text-align: left;
+         font-size: small;
+      }
+      
+      .center3 {
+         text-align: left;
+         font-size: small;
+         
+      }
+      
+      .left-align{
+         text-align: left;
+         position: absolute;
+         font-size: small;
+      
+      }
+      .qr{
+         margin-left: 550px;
+         position: absolute;
+         width: 130px;
+         height: 130px;
+         /* border: 1px solid black; */
+      }
+      /* .image{
+         background-color: aqua;
+      } */
+      .right-align {
+         text-align: left;
+         margin-left: 320px;
+         font-size: small;
+      }
+      
+      table {
+         width: 100%;
+         font-size: small;
+      }
+      .right{
+         margin-top: -33%;
+         font-size: small;
+         text-align: left;
+         margin-left: 73.5%;
+      }
+      table, th {
+         border: 1px solid #ddd;
+      }
+      
+      th, td {
+         /* padding: 8px; */
+         text-align: left;
+      }
 
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  .additional-charges, .total {
-    margin-top: 20px;
-    font-size: 10px;
-  }
-  
-  .total {
-    text-align: right;
-    font-weight: bold;
-    margin-top: -3%;
-  }
-  
-  .amount-in-words {
-    margin-top: 20px;
-    font-style: italic;
-  }
-  
+      th {
+         background-color: #f2f2f2;
+      }
+      
+      .additional-charges, .total {
+         margin-top: 20px;
+         font-size: 10px;
+      }
+      
+      .total {
+         text-align: right;
+         font-weight: bold;
+         margin-top: -3%;
+      }
+      
+      .amount-in-words {
+         margin-top: 20px;
+         font-style: italic;
+      }
+      
 
-  
-  @media screen and (max-width: 600px) {
-    .invoice {
-      padding: 10px;
-    }
-  
-    .shop {
-      text-align: center;
-    }
-  
-    .left-align, .right-align {
-      text-align: center;
-    }
-  
-    .invoice-header {
-      text-align: center;
-    }
-  
-    table {
-      margin-top: 10px;
-    }
-  
-    th, td {
-      padding: 4px;
-    }
-  
-    additional-charges, .total, .amount-in-words {
-      margin-top: 10px;
-    }
-  }
+      
+      @media screen and (max-width: 600px) {
+         .invoice {
+            padding: 10px;
+         }
+      
+         .shop {
+            text-align: center;
+         }
+      
+         .left-align, .right-align {
+            text-align: center;
+         }
+      
+         .invoice-header {
+            text-align: center;
+         }
+      
+         table {
+            margin-top: 10px;
+         }
+      
+         th, td {
+            padding: 4px;
+         }
+      
+         additional-charges, .total, .amount-in-words {
+            margin-top: 10px;
+         }
+      }
     </style>
    </head>
    <body>
@@ -131,6 +134,7 @@
       <div>
          <div class="invoice-header">
             <div class="qr">
+               <img src="<%= imagePath %>" width="130px" height="130px" alt="">
             </div>
             <h5 ><b> <%= invoiceData.companydetails.companyname %> </b></h5>
             <p class="center2"> <%= invoiceData.companydetails.companyofficeaddress %><br>
