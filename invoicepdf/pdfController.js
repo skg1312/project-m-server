@@ -95,6 +95,11 @@ try {
     "footer": {
         "height": "0mm",
     },
+    childProcessOptions: {
+    env: {
+      OPENSSL_CONF: '/dev/null',
+    },
+  }
 };
     pdf.create(html, options)
     .toFile(targetLocation, function (error) {
