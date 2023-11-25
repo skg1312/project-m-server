@@ -6,7 +6,7 @@ var logger = require('morgan');
 var mongoose  = require('mongoose');
 var cors = require('cors');
 
-
+var indexRouter = require('./routes/index');
 var admin = require('./routes/admin');
 var buyer = require('./routes/buyer');
 var seller = require('./routes/seller');
@@ -42,6 +42,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', indexRouter);
 app.use('/admin', admin);
 app.use('/buyer', buyer);
 app.use('/seller', seller);
