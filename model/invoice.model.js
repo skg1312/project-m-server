@@ -28,13 +28,13 @@ const invoiceSchema = new mongoose.Schema({
     },
     vehicledetails: {
         drivername: String,
-        drivernumber: String,
+        drivernumber: Number,
         driveraddress: String,
         driveridproof: String,
         driverlicenseno: String,
-        vehiclenumber: String,
-        vehiclemodel: String,
-        vehicleofficebranch: String,
+        vechiclenuumber: String,
+        vechiclemodel: String,
+        vechicleofficebranch: String,
     },
   consignmentdetails: {
             itemdetails: [
