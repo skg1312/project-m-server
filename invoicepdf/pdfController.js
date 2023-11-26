@@ -95,6 +95,11 @@ try {
     "footer": {
         "height": "0mm",
     },
+    childProcessOptions: {
+    env: {
+      OPENSSL_CONF: '/dev/null',
+    },
+  }
 };
 pdf.create(html, {
   childProcessOptions: {
@@ -107,4 +112,3 @@ pdf.create(html, {
     console.log("Error generating QR code");
   }
 };
-
