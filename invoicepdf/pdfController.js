@@ -68,7 +68,7 @@ try {
   await generateQRCode(qrCodeData, imagePath);
 
   // Generate QR code and get base64 string
-  const qrCodeBase64 = await generateQRCodeBase64(result.invoicedetails.invoiceno);
+  const qrCodeBase64 = await generateQRCodeBase64(`${API}download/${result._id}`);
 
   // render pdf html
   ejs.renderFile('./views/pdf/report-template.ejs', {
@@ -96,12 +96,15 @@ try {
         "height": "0mm",
     },
 };
-    pdf.create(html, options)
-    .toFile(targetLocation, function (error) {
-      if (error) return console.log('this pdf create error ' + error);                                                                                       
-      if (callback) callback(targetLocation);
-    });
+pdf.create(html, {
+  childProcessOptions: {
+    env: {
+      OPENSSL_CONF: '/dev/null',
+    },
+  }
+});
   } catch (error) {
     console.log("Error generating QR code");
   }
 };
+
