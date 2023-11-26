@@ -11,7 +11,7 @@ var converter = require('number-to-words');
 
 app.use(express.static('public'));
 
-
+var API = process.env.DOWNLOAD_BASE_URL || `https://squid-app-og92j.ondigitalocean.app/`;
 exports.generatePdf = async (
   info = { filename: 'pdf_file', format: 'A4' },
   result,
