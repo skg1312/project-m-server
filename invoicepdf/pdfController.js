@@ -96,19 +96,17 @@ try {
         "height": "0mm",
     },
     childProcessOptions: {
-    env: {
-      OPENSSL_CONF: '/dev/null',
-    },
-  }
-};
-pdf.create(html, {
-  childProcessOptions: {
-    env: {
-      OPENSSL_CONF: '/dev/null',
-    },
-  }
-});
-  } catch (error) {
-    console.log("Error generating QR code");
-  }
-};
+      env: {
+        OPENSSL_CONF: '/dev/null',
+      },
+    }
+  };
+      pdf.create(html, options)
+      .toFile(targetLocation, function (error) {
+        if (error) return console.log('this pdf create error ' + error);                                                                                       
+        if (callback) callback(targetLocation);
+      });
+    } catch (error) {
+      console.log("Error generating QR code");
+    }
+  };
