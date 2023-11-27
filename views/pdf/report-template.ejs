@@ -253,7 +253,7 @@
             </tr>
             <tr >
                <td colspan="3">AMOUNT CHARGEABLE (in words)</td>
-               <td colspan="4" > <%= (converter.toWords(itemAmountSum + itemTaxSum)).toUpperCase()%> ONLY</td>
+               <td colspan="4" > <%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase()%></td>
             </tr>
          </tbody>
       </table>
@@ -289,7 +289,7 @@
             </tr>
             <tr >
                <td colspan="3">TOTAL AMOUNT(in words)</td>
-               <td colspan="4" > <%= (converter.toWords(itemTaxSum)).toUpperCase()%> ONLY </td>
+               <td colspan="4" > <%= (toWords.convert(itemTaxSum)).toUpperCase()%></td>
             </tr>
          </tbody>
       </table>
