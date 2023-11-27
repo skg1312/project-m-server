@@ -7,11 +7,32 @@ const qr = require("qrcode");
 const fs = require("fs");
 const moment = require('moment');
 const commaNumber = require('comma-number');
-var converter = require('number-to-words');
+const { ToWords } = require('to-words');
 
 app.use(express.static('public'));
 
 var API = process.env.DOWNLOAD_BASE_URL || `https://squid-app-og92j.ondigitalocean.app/`;
+
+const toWords = new ToWords({
+  localeCode: 'en-IN',
+  converterOptions: {
+    currency: true,
+    ignoreDecimal: false,
+    ignoreZeroCurrency: false,
+    doNotAddOnly: false,
+    currencyOptions: { // can be used to override defaults for the selected locale
+      name: 'Rupee',
+      plural: 'Rupees',
+      symbol: '₹',
+      fractionalUnit: {
+        name: 'Paisa',
+        plural: 'Paise',
+        symbol: '',
+      },
+    }
+  }
+});
+
 exports.generatePdf = async (
   info = { filename: 'pdf_file', format: 'A4' },
   result,
@@ -76,7 +97,7 @@ try {
      imagePath: qrCodeBase64,
      moment: moment,
      commaNumber: commaNumber,
-     converter: converter}, function(err, result) {
+     toWords: toWords}, function(err, result) {
     // render on success
       if (result) {
         html = result;
