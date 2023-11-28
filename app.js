@@ -52,7 +52,7 @@ app.use('/user', user);
 app.use('/consignment', consignment);
 app.use('/vechicle', vechicle);
 app.use('/invoice', invoice);
-app.use('/download', download)
+app.use('/download', download);
 
 
 // catch 404 and forward to error handler

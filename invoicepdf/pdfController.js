@@ -43,6 +43,9 @@ exports.generatePdf = async (
   // console.log("fileId: ", fileId);
   const targetLocation = `./public/download/${fileId}`;
   const imageLocation = `./public/qrImages/`;
+  const logoLocation = `./public/logo/logo.jpg`;
+  const publicFolder = path.join(__dirname, '..');
+  const logoPath = path.join(publicFolder, logoLocation);
 
   // if PDF already exist, then delete it and create new PDF
   if (fs.existsSync(targetLocation)) {
@@ -91,10 +94,12 @@ try {
   // Generate QR code and get base64 string
   const qrCodeBase64 = await generateQRCodeBase64(`${API}download/${result._id}`);
 
+  console.log('Logo Path:', logoPath);
   // render pdf html
   ejs.renderFile('./views/pdf/report-template.ejs', {
      invoiceData: result,
      imagePath: qrCodeBase64,
+     logoPath: `data:image/jpeg;base64,${fs.readFileSync(logoPath, { encoding: 'base64' })}`,
      moment: moment,
      commaNumber: commaNumber,
      toWords: toWords}, function(err, result) {

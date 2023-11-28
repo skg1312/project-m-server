@@ -130,12 +130,14 @@
     <div class="invoice">
       <div>
          <div class="invoice-header">
-
-            <center><h5>TAX INVOICE</h5></center>
+            <center><h5>TAX INVOICE </h5></center>
             <div class="qr">
-               <img src="<%= imagePath %>" width="130px" height="130px" alt="">
+               <img src="<%= imagePath %>" width="200px" height="200px" alt="">
             </div>
-            <h5 ><b> <%= invoiceData.companydetails.companyname %> </b></h5>
+            <h5 >
+               <img src="<%= logoPath %>" alt="Logo" width="100px" height="100px">
+               <br />
+               <b> <%= invoiceData.companydetails.companyname %> </b></h5>
             <p class="center2"> <%= invoiceData.companydetails.companyofficeaddress %><br>
                <%= invoiceData.companydetails.companystate %> <br>
                <%= invoiceData.companydetails.companycountry %><br> 
@@ -209,8 +211,7 @@
                <th>DESCRIPTION OF GOODS</th>
                <th>HSN/SAC</th>
                <th>QUANTITY</th>
-               <th>RATE</th>
-               <!-- <th>PER</th> -->
+               <th>PRICE</th>
                <th>AMOUNT</th>
             </tr>
          </thead>
@@ -218,27 +219,33 @@
             <% var itemQuantitySum = 0;  %>
             <% var itemAmountSum = 0;  %>
             <% var itemTaxSum = 0;  %>
+            <% var TotalAmount = 0;  %>
+            <% var itemAmount = 0;  %>
             <% if (invoiceData.consignmentdetails.itemdetails.length > 0) { %>
                <% invoiceData.consignmentdetails.itemdetails.forEach((item, index) => {%>
                   <% itemQuantitySum += item.itemquantity %>
-                  <% itemAmountSum += item.itemprice %>
-                  <% itemTaxSum += (item.itemtaxrate/100 * item.itemprice) %>
+                  <% itemAmount = (item.itemprice * item.itemquantity) %>
+                  <% itemAmountSum += itemAmount %>
+                  <% itemTaxSum += ((9/100 * (item.itemprice * item.itemquantity)) + (9/100 * (item.itemprice * item.itemquantity)) + (18/100 * (item.itemprice * item.itemquantity))) %>
+                  <% TotalAmount += (itemAmountSum + itemTaxSum) %>
               <tr >
                  <td><%= index+1 %></td>
                  <td><%= item.itemname %></td>
                  <td><%= item.itemhsn %></td>
                  <td><%= item.itemquantity %></td>
-                 <td><%= item.itemtaxrate %></td>
-                 <td><%= commaNumber(item.itemprice) %></td>
+                 <td><%= item.itemprice %></td>
+                 <td><%= commaNumber(itemAmount) %></td>
               </tr>
        
             <tr >
                <td></td>
-               <td>less :  OUTPUT IGST   @<%= item.itemtaxrate %>% ROUND OFF </td>
+               <td>less :
+                  OUTPUT CGST @9%,SGST @9%,IGST @18%ROUND OFF,
+               </td>
                <td>
                <td>
                <td></td>
-               <td><%= commaNumber(item.itemtaxrate/100 * item.itemprice) %></td>
+               <td><%= commaNumber((9/100 * itemAmount) + (9/100 * itemAmount) + (18/100 * itemAmount))%></td>
             </tr>
             <%  });%>
             <% } %>
@@ -253,7 +260,7 @@
             </tr>
             <tr >
                <td colspan="3">AMOUNT CHARGEABLE (in words)</td>
-               <td colspan="4" > <%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase()%></td>
+               <td colspan="4" > <%= (toWords.convert(TotalAmount)).toUpperCase()%></td>
             </tr>
          </tbody>
       </table>
@@ -274,9 +281,9 @@
             <tr >
                <td><%= index+1 %></td>
                <td><%= item.itemhsn %></td>
-               <td><%= commaNumber(item.itemprice) %></td>
-               <td><%= item.itemtaxrate %>% </td>
-               <td><%= commaNumber(item.itemtaxrate/100 * item.itemprice) %></td>
+               <td><%= commaNumber((item.itemprice * item.itemquantity)) %></td>
+               <td><%= "9% + 9% + 18%" %> </td>
+               <td><%= commaNumber((9/100 * (item.itemprice * item.itemquantity)) + (9/100 * (item.itemprice * item.itemquantity)) + (18/100 * (item.itemprice * item.itemquantity))) %></td>
             </tr>
             <%  });%>
             <% } %>

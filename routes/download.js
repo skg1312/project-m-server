@@ -2,6 +2,8 @@ const custom = require('../invoicepdf/pdfController')
 const express = require('express');
 const router = express.Router();
 const Invoice = require('../model/invoice.model'); 
+const fs = require('fs');
+const path = require('path'); 
 
 router.get('/:id', async (req, res) => {
   var invoiceId = req.params.id;
@@ -60,7 +62,25 @@ router.get('/:id', async (req, res) => {
 }
 
 });
+router.get('/pdf/:id', async (req, res) => {
+  const invoiceId = req.params.id;
+  const fileLocation = path.join(__dirname, `../public/download/${invoiceId}.pdf`);
 
+  // Check if the file exists
+  if (fs.existsSync(fileLocation)) {
+    // Read the PDF file and send it as a response
+    const fileStream = fs.createReadStream(fileLocation);
+    fileStream.pipe(res);
+  } else {
+    // If the file does not exist, send a 404 response
+    res.status(404).json({
+      success: false,
+      result: null,
+      message: "Couldn't find file",
+      error: 'File not found',
+    });
+  }
+});
 module.exports = router;
 
 
