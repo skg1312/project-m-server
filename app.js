@@ -17,6 +17,7 @@ var consignment = require('./routes/consignment');
 var vechicle = require('./routes/vechicle');
 var invoice = require('./routes/invoice');
 var download = require('./routes/download')
+var load = require('./routes/load');
 
 
 
@@ -53,6 +54,7 @@ app.use('/consignment', consignment);
 app.use('/vechicle', vechicle);
 app.use('/invoice', invoice);
 app.use('/download', download);
+app.use('/load', load);
 
 
 // catch 404 and forward to error handler

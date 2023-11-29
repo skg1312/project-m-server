@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Admin = require('../model/admin.model'); // Import your Admin model here
+const Admin = require('../model/admin.model'); 
 
 // GET: Retrieve all admins
 router.get('/', async (req, res) => {
