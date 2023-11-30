@@ -42,18 +42,31 @@ const invoiceSchema = new mongoose.Schema({
             ],
           },        
 
-    invoicedetails: {
-        invoiceno: String,
-        invoicedate: Date,
-    },
+          invoicedetails: {
+            invoiceno: {
+              type: String,
+              default: function () {
+                const currentYear = new Date().getFullYear().toString().slice(-2);
+                const counter = this.constructor.countDocuments({
+                  'invoicedetails.invoiceno': { $regex: new RegExp(`${currentYear}\\d{7}`) },
+                }).exec();
+                return `${currentYear}${counter + 1}`.padStart(9, '0'); // Generate invoice number with leading zeros
+              },
+            },
+            invoicedate: {
+              type: Date,
+              default: Date.now,
+            },
+          },
+        
     boardingdetails: {
-        lrno: String,
-        weight: Number,
-        transportationcost: Number,
         dateofloading: Date,
-        startingpoint: String,
-        endingpoint: String,
         watermark: String,  
+    },
+    loadingdetails: {
+        startpoint: String,
+        endpoint: String,
+        transportationcost: Number,
     },
     
 });

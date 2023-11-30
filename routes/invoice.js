@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Invoice = require('../model/invoice.model'); // Import your Invoice model here
+const Invoice = require('../model/invoice.model');
 
 // GET: Retrieve all invoices
 router.get('/', async (req, res) => {
@@ -22,6 +22,7 @@ router.post('/', async (req, res) => {
     consignmentdetails,
     invoicedetails,
     boardingdetails,
+    loadingdetails,
   } = req.body;
 
   try {
@@ -31,11 +32,19 @@ router.post('/', async (req, res) => {
       buyerdetails,
       vehicledetails,
       consignmentdetails,
-      invoicedetails,
+      invoicedetails: { invoiceno: undefined, invoicedate: new Date() }, // Set invoiceno in the schema
       boardingdetails,
+      loadingdetails,
     });
 
     const savedInvoice = await newInvoice.save();
+    const currentYear = new Date().getFullYear().toString().slice(-2);
+    const counter = await Invoice.countDocuments({
+      'invoicedetails.invoiceno': { $regex: new RegExp(`${currentYear}\\d{7}`) },
+    }).exec();
+    savedInvoice.invoicedetails.invoiceno = `${currentYear}${(counter + 1).toString().padStart(7, '0')}`;
+    await savedInvoice.save();
+
     res.status(201).json(savedInvoice);
   } catch (err) {
     res.status(400).json({ error: 'Error creating invoice' });
