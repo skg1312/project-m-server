@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Buyer = require('../model/buyer.model'); // Import your Buyer model here
 
+const multer = require('multer');
+const csv = require('csvtojson');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 // GET: Retrieve all buyers
 router.get('/', async (req, res) => {
   try {
@@ -38,7 +43,25 @@ router.post('/', async (req, res) => {
     res.status(400).json({ error: 'Error creating buyer' });
   }
 });
+router.post('/upload', upload.single('file'), async (req, res) => {
+  try {
+    // Use csvtojson to convert CSV buffer to JSON
+    const jsonData = await csv().fromString(req.file.buffer.toString());
 
+    // Iterate through the JSON data and create buyers
+    const createdBuyers = await Promise.all(
+      jsonData.map(async (buyerData) => {
+        const newBuyer = new Buyer(buyerData);
+        return await newBuyer.save();
+      })
+    );
+
+    res.status(201).json(createdBuyers);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ error: 'Error uploading and creating buyers' });
+  }
+});
 // PUT: Update a buyer by ID
 router.put('/:id', async (req, res) => {
   const { id } = req.params;

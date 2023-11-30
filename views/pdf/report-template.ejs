@@ -155,6 +155,8 @@
                      <b>GSTIN/UIN</b> : <%= invoiceData.sellerdetails.sellercompanygstno %> <br> 
                      <b>State Name</b>  : <%= invoiceData.sellerdetails.sellercompanystatename %> <b>Code</b> : <%= invoiceData.sellerdetails.sellercompanystatecode %> <br>
                   <p style="margin-top: -5%;"><b>_______________________________________</b></p>
+               </div>
+               <div class="right-align">
                   <p style="margin-top: -5%;"><b >BUYER</b> <br>
                      <%= invoiceData.buyerdetails.buyercompanyname %> <br>
                      <%= invoiceData.buyerdetails.buyercompanyaddress %> <br> 
@@ -162,43 +164,14 @@
                      <b>GSTIN/UIN</b> : <%= invoiceData.buyerdetails.buyercompanygstno %> <br>
                      <b>State Name</b>  : <%= invoiceData.buyerdetails.buyercompanystatename %>, <b>Code</b> : <%= invoiceData.buyerdetails.buyercompanystatecode %> <br> 
                   </p>
-                  <p style="margin-top: -5%;"><b>_______________________________________</b></p>
-                  <p style="margin-top: -5%;"> <b>TERMS OF DELIVERY</b> <br>
-                     <%= invoiceData.invoicedetails.termsandcondition %> 
-                  </p>
                </div>
                <div class="right-align" >
                   <b>INVOICE NO.</b> <br>
-                  <b>E-WAY NO.</b> <br>
                   <b>INVOICE DATE</b> <br>
-                  <b>DELIVERY NOTE</b> <br>
-                  <b>MODE/TERMS OF PAYMENT</b> <br>
-                  <b>SUPPLIER'S REF</b> <br>
-                  <b>OTHER REFERENCE(S)</b> <br>
-                  <b>ORDER DATE</b> <br>
-                  <b>DISPATCH DOCUMENT NO.</b> <br>
-                  <b>DELIVERY NOTE DATE</b> <br>
-                  <b>DISPATCHED THROUGH</b><br>
-                  <!-- <b>DELIVERY DATE</b> <br> -->
-                  <b>DESTINATION</b> <br>
-                  <b>BILL LANDING/LR-RR NO.</b> <br>
-                  <b>MOTOR VEHICLE NUMBER</b><br>
                </div>
                <div class="right">
                   :  <%= invoiceData.invoicedetails.invoiceno %> <br>
-                  :  <%= invoiceData.invoicedetails.ewaybillno %> <br>
                   :  <%= moment(invoiceData.invoicedetails.invoicedate).format("DD/MM/YYYY") %> <br>
-                  :  <%= invoiceData.invoicedetails.deliverynote %><br>
-                  :  <%= invoiceData.invoicedetails.termsofpayment %> <br>
-                  :  <%= invoiceData.invoicedetails.supplierref %><br>
-                  :  <%= invoiceData.invoicedetails.otherref %><br>
-                  :  <%= moment(invoiceData.invoicedetails.ordereddate).format("DD/MM/YYYY") %><br>
-                  :  <%= invoiceData.invoicedetails.dispatchdocumentno %><br>
-                  :  <%= moment(invoiceData.invoicedetails.deliverynotedate).format("DD/MM/YYYY") %><br>
-                  :  <%= invoiceData.invoicedetails.dispatchthrough %> <br>
-                  :  <%= invoiceData.invoicedetails.destination %><br>
-                  :  <%= invoiceData.boardingdetails.lrno %> <br>
-                  :  <%= invoiceData.vehicledetails.vechiclenuumber %> <br>
                </div>
             </div>
          </div>

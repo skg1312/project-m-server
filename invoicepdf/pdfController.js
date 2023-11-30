@@ -39,6 +39,7 @@ exports.generatePdf = async (
   callback
 ) => {
   // console.log("result: ", result);
+  const resultid = result._id;
   const fileId = result._id + '.pdf';
   // console.log("fileId: ", fileId);
   const targetLocation = `./public/download/${fileId}`;
@@ -92,7 +93,8 @@ try {
   await generateQRCode(qrCodeData, imagePath);
 
   // Generate QR code and get base64 string
-  const qrCodeBase64 = await generateQRCodeBase64(`${API}download/${result._id}`);
+  const qrCodeBase64 = await generateQRCodeBase64(`${API}download/${resultid}`);
+  console.log(qrCodeBase64);
 
   console.log('Logo Path:', logoPath);
   // render pdf html
@@ -129,10 +131,10 @@ try {
   };
       pdf.create(html, options)
       .toFile(targetLocation, function (error) {
-        if (error) return console.log('this pdf create error ' + error);                                                                                       
+        if (error) return console.log('this pdf create error ' + error);                                                                                      
         if (callback) callback(targetLocation);
       });
     } catch (error) {
-      console.log("Error generating QR code");
+      console.log("Error generating QR code" + error);
     }
   };
