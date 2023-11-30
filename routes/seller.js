@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Seller = require('../model/seller.model'); // Import your Seller model here
+const Seller = require('../model/seller.model');
+const multer = require('multer');
+const csv = require('csvtojson');
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 // GET: Retrieve all sellers
 router.get('/', async (req, res) => {
@@ -89,6 +94,25 @@ router.delete('/:id', async (req, res) => {
     }
   } catch (err) {
     res.status(500).json({ error: 'Error deleting seller' });
+  }
+});
+
+// POST: Upload sellers from CSV file
+router.post('/upload', upload.single('file'), async (req, res) => {
+  try {
+    const jsonData = await csv().fromString(req.file.buffer.toString());
+
+    const createdSellers = await Promise.all(
+      jsonData.map(async (sellerData) => {
+        const newSeller = new Seller(sellerData);
+        return await newSeller.save();
+      })
+    );
+
+    res.status(201).json(createdSellers);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ error: 'Error uploading and creating sellers' });
   }
 });
 
