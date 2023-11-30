@@ -7,10 +7,9 @@ const invoiceSchema = new mongoose.Schema({
         companypartytype: String,
         companygstno: String,
         companycontact: String, 
-        companycountry: String,
         companystate: String,
+        companystatecode: String, 
         companyofficeaddress: String,
-        companypincode: String, 
     },
     sellerdetails: {
         sellercompanyname: String,
@@ -27,14 +26,9 @@ const invoiceSchema = new mongoose.Schema({
         buyercompanystatecode: String,
     },
     vehicledetails: {
-        drivername: String,
         drivernumber: Number,
-        driveraddress: String,
-        driveridproof: String,
-        driverlicenseno: String,
-        vechiclenuumber: String,
+        vechiclenumber: String,
         vechiclemodel: String,
-        vechicleofficebranch: String,
     },
   consignmentdetails: {
             itemdetails: [
@@ -50,30 +44,18 @@ const invoiceSchema = new mongoose.Schema({
 
     invoicedetails: {
         invoiceno: String,
-        ewaybillno: String,
         invoicedate: Date,
-        deliverynote: String,
-        termsofpayment: String,
-        supplierref: String,
-        otherref: String,
-        buyersorder: String,
-        ordereddate: Date,
-        dispatchdocumentno: String,
-        deliverynotedate: Date,
-        dispatchthrough: String,
-        destination: String,
-        termsandcondition: String,
     },
     boardingdetails: {
         lrno: String,
         weight: Number,
         transportationcost: Number,
-        totalcost: Number,
         dateofloading: Date,
         startingpoint: String,
         endingpoint: String,
         watermark: String,  
-    }
+    },
+    
 });
 
 const Invoice = mongoose.model('Invoice', invoiceSchema);
