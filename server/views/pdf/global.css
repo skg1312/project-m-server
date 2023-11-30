@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --t-200: Urbanist;
+  --font-gurajada: Gurajada;
+  --font-ibm-plex-mono: "IBM Plex Mono";
+  --font-inter: Inter;
+  --font-bakbak-one: "Bakbak One";
+  --font-poppins: Poppins;
+  --font-post-no-bills-colombo-extrabold: "Post No Bills Colombo ExtraBold";
+
+  /* font sizes */
+  --headline-size: 20px;
+  --button-medium-size: 16px;
+  --t-200-size: 32px;
+  --t-100-size: 24px;
+  --font-size-23xl: 42px;
+  --button-big-size: 18px;
+  --t-800-size: 92px;
+  --font-size-3xl: 22px;
+  --font-size-6xl: 25px;
+  --button-small-size: 14px;
+  --font-size-33xl: 52px;
+  --font-size-smi-7: 12.7px;
+  --font-size-2xs-9: 10.9px;
+  --font-size-lg-2: 18.2px;
+  --font-size-base-4: 16.4px;
+  --t-500-size: 64px;
+  --font-size-3xs: 10px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-white-100: #fefefe;
+  --color-grey-60: #767676;
+  --color-grey-100: #1a1a1a;
+  --color-gray-100: #181818;
+  --mono-dark: #211313;
+  --color-gray-200: rgba(254, 254, 254, 0.6);
+  --color-gray-300: rgba(254, 254, 254, 0.05);
+  --color-gray-400: rgba(0, 0, 0, 0.75);
+  --color-grey-20: #d2d2d2;
+  --color-black: #000;
+  --color-primary-1: #5925dc;
+  --color-blueviolet-100: rgba(89, 37, 220, 0.04);
+  --color-whitesmoke: #ededed;
+  --color-dimgray: #636364;
+  --color-silver: rgba(196, 196, 196, 0);
+  --color-gainsboro: #e3e3e3;
+  --color-mediumslateblue: #7a5af8;
+  --color-primary-20: #d9d6fe;
+  --color-darkslategray: #484848;
+  --color-grey-40: #a4a4a4;
+  --color-primary-60: #9b8afb;
+  --color-grey-80: #0ab407;
+  --color-darkorange: #ff9514;
+  --color-primary-0: #f4f3ff;
+
+  /* Border radiuses */
+  --br-mini: 15px;
+  --br-7xs: 6px;
+  --br-xl: 20px;
+  --br-11xl: 30px;
+  --br-xs: 12px;
+  --br-21xl: 40px;
+  --br-12xs: 1px;
+  --br-2xs-9: 10.9px;
+  --br-8xl-3: 27.3px;
+  --br-sm-6: 13.6px;
+  --br-9xs: 4px;
+  --br-9xl: 28px;
+  --br-3xs: 10px;
+  --br-81xl: 100px;
+  --br-8xs: 5px;
+  --br-11xs: 2px;
+}
