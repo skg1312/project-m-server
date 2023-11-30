@@ -135,6 +135,6 @@ try {
         if (callback) callback(targetLocation);
       });
     } catch (error) {
-      console.log("Error generating QR code" + error);
+      console.log("Error generating pdf" + error);
     }
   };
