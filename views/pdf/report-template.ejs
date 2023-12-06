@@ -163,6 +163,21 @@
         .table2{
           margin-top: -4%;
         }
+		.watermark {
+  position: absolute;
+  top: 600px;
+  left: 431px; 
+  font-size: 50px;
+  font-family: var(--font-gurajada);
+  color: var(--color-black);
+  display: inline-block;
+   /* width: 1238.9px; */
+  /* height: 114px;  */
+  transform: rotate(-45deg);
+  transform-origin: 0 0;
+  opacity: 0.1;
+  mix-blend-mode: darken;
+} 
 
   
 		</style>
@@ -407,6 +422,7 @@
 					<p>This is a computer generated invoice</p>
 				</div>
 			</div>
+			<div class="watermark"><%= invoiceData.boardingdetails.watermark %></div>
 		</div>
 	</body>
 </html>
