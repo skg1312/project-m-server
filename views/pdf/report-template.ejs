@@ -129,21 +129,7 @@
 			    text-align: center;
 			}
 
-			h1 {
-			    position: relative;
-			    font-size: 40px; /* Adjust the font size as needed */
-			  }
-
-			  h1::after {
-			    content: "AJES";
-			    position: absolute;
-			    top: 900%; /* Adjust the vertical position of the watermark */
-			    left: 30%; /* Adjust the horizontal position of the watermark */
-			    color: rgba(0, 0, 0, 0.1); /* Adjust the color and opacity of the watermark */
-			    font-size: 100px; /* Adjust the font size of the watermark text */
-			    transform: rotate(-45deg); /* Rotate the watermark text */
-			    pointer-events: none; /* Ensure the watermark doesn't interfere with pointer events */
-			  }
+		
 			  th{
 			    text-align: center;
 			  }
@@ -163,27 +149,43 @@
         .table2{
           margin-top: -4%;
         }
-		.watermark {
-  position: absolute;
-  top: 600px;
-  left: 431px; 
-  font-size: 50px;
-  font-family: var(--font-gurajada);
-  color: var(--color-black);
-  display: inline-block;
-   /* width: 1238.9px; */
-  /* height: 114px;  */
-  transform: rotate(-45deg);
-  transform-origin: 0 0;
-  opacity: 0.1;
-  mix-blend-mode: darken;
-} 
+
+        #background {
+          margin-left: -10%;
+         margin-top: 10%;
+         height: 100%;
+         padding-top: 6%;
+         padding-right: 5%;
+        position: absolute;
+            display: block;
+            width: 80%;
+            opacity: 0.7;
+           
+            text-align: start;
+            background-color: transparent;
+          
+        }
+        #bg-text {
+            color: lightgrey;
+            font-size: 50px;
+            transform: rotate(300deg);
+            -webkit-transform: rotate(300deg);
+            opacity: 0.9;
+            filter: alpha(opacity=40);
+            background-color: transparent;
+        }
 
   
 		</style>
+
+    
 	</head>
 	<body>
+    
 		<div class="invoice">
+      <div id="background">
+        <p id="bg-text"><%= invoiceData.boardingdetails.watermark %></p>
+    </div>
 			<div class="invoice-header">
 				<p style="text-align: center;font-weight: bold;">TAX INVOICE</p>
 				<div class="logo">
@@ -422,7 +424,6 @@
 					<p>This is a computer generated invoice</p>
 				</div>
 			</div>
-			<div class="watermark"><%= invoiceData.boardingdetails.watermark %></div>
 		</div>
 	</body>
 </html>
