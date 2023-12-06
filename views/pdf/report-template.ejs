@@ -1,243 +1,399 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+<html>
+	<head>
+		<style>
+			           /* Customize additional styles as needed */
+			  body {
+			    font-family: Arial, sans-serif;
+			    margin: 0;
+			    padding: 0;
+			    }
+			    .invoice {
+			    max-width: 720px;
+			    margin: 0 auto;
+			    padding: 20px;
+			    border: 1px solid #000000;
+			    border-radius: 5px;
+			    background-color: #fff;
+			    }
+			    .qr img {
+			    margin-left: 100px;
+			    position: absolute;
+			    width: 150px;
+			    height: 100px;
+			    top: 7%;
 
-    .invoice {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #000000;
-      border-radius: 5px;
-      background-color: #fff;
-    }
+			    }
+			    .qr{
+			        border-bottom: 3px solid black;
+			        width: 45%;
+			        border-bottom: 3px solid black;
+			        margin-top: -4%;
+			        margin-left: 55%;
+			    }
+			    .left{
+			        border-bottom: 2px solid black;
+			        font-size: 15px;
+			        margin-left: 55%;
+			        /* margin-left: 73.5%; */
+			        margin-top: -2%;
 
-    .qr {
-      margin-left: 430px;
-      position: absolute;
-      width: 180px;
-      height: 120px;
-    }
 
-    .right {
-      margin-top: -33%;
-      font-size: small;
-      text-align: left;
-      margin-left: 73.5%;
-    }
+			    }
+			    .right {
+			    border-top: 3px solid black;
+			    font-size: 15px;
+			    text-align: left;
+			    /* margin-left: 73.5%; */
+			    width: 45%;
+			    border-bottom: 2px solid black;
+			    }
+			    table {
+			    width: 100%;
+			    font-size: small;
 
-    table {
-      width: 100%;
-      font-size: small;
-    }
 
-    th, td {
-      text-align: left;
-    }
 
-    th {
-      background-color: #f2f2f2;
-    }
+			    }
+			    th, td {
+			    text-align: left;
+			    }
+			    th {
+			    background-color: #f2f2f2;
+			    }
+			    .additional-charges, .total {
+			    margin-top: 20px;
+			    font-size: 10px;
+			    }
+			    .total {
+			    text-align: right;
+			    font-weight: bold;
+			    margin-top: -3%;
+			    }
+			    .amount-in-words {
+			    margin-top: 20px;
+			    font-style: italic;
+			    }
+			    @media screen and (max-width: 600px) {
+			    .invoice {
+			    padding: 10px;
+			    }
+			    .qr, .right {
+			    text-align: center;
+			    }
+			    table {
+			    margin-top: 10px;
+			    }
+			    th, td {
+			    padding: 4px;
+			    }
+			    .additional-charges, .total, .amount-in-words {
+			    margin-top: 10px;
+			    }
+			    }
+			.logo img{
+			    width: 10%;
+			    height: 10%;
+			}
+			.comAddress{
+			    display: flex;
+			}
+			.comAddress p{
+			    display: flex;
 
-    .additional-charges, .total {
-      margin-top: 20px;
-      font-size: 10px;
-    }
+			}
+			.companyname{
+			    font-size: 20px;
+			    font-weight: bold;
+			    margin-left: 12%;
+			    margin-top: -10%
+			}
+			.companyname1{
+			    margin-top: -5%;
+			    margin-left: 12%;
+			}
+			h5{
+			    text-align: center;
+			}
+			.alignleft{
+			    display: flex;
+			    border-bottom: 2px solid black;
+			    width: 45%;
+			    font-size: 14px;
+			}
+			.alignright{
+			    display: flex;
+			    margin-left: 55%;
+			    margin-top: -17%;
+			    border-bottom: 2px solid black;
+			    font-size: 14px;
+			}
+			td{
+			    text-align: center;
+			}
 
-    .total {
-      text-align: right;
-      font-weight: bold;
-      margin-top: -3%;
-    }
+			h1 {
+			    position: relative;
+			    font-size: 40px; /* Adjust the font size as needed */
+			  }
 
-    .amount-in-words {
-      margin-top: 20px;
-      font-style: italic;
-    }
+			  h1::after {
+			    content: "AJES";
+			    position: absolute;
+			    top: 900%; /* Adjust the vertical position of the watermark */
+			    left: 30%; /* Adjust the horizontal position of the watermark */
+			    color: rgba(0, 0, 0, 0.1); /* Adjust the color and opacity of the watermark */
+			    font-size: 100px; /* Adjust the font size of the watermark text */
+			    transform: rotate(-45deg); /* Rotate the watermark text */
+			    pointer-events: none; /* Ensure the watermark doesn't interfere with pointer events */
+			  }
+			  th{
+			    text-align: center;
+			  }
+			  .bottomleft{
+			    display: flex;
+			  }
+			  .bottomright{
+			    display: flex;
+			    margin-left: 80%;
+			    margin-top: -5%;
+			  }
+			  .center{
+			    text-align: center;
+			  }
+		</style>
+	</head>
+	<body>
+		<div class="invoice">
+			<div class="invoice-header">
+				<p style="text-align: center;font-weight: bold;">TAX INVOICE</p>
+				<div class="logo">
+               <img src="<%= logoPath %>" alt="Logo">
+            </div>
+				<div class="comAddress">
+					<p class="companyname"><%= invoiceData.companydetails.companyname %></p>
+					<br />
+					<p class="companyname1">
+						<%= invoiceData.companydetails.companyofficeaddress %><br />
+						GSTIIN/UN : <%= invoiceData.companydetails.companygstno %> <br />
+						State Name : <%= invoiceData.companydetails.companystate %>
+					</p>
+				</div>
+				<div class="right">
+					<b>Invoice No</b>
+					: <%= invoiceData.invoicedetails.invoiceno %><br />
+				</div>
+				<div class="left">
+					<b>Dated</b>
+					: <%= moment(invoiceData.invoicedetails.invoicedate).format("DD/MM/YYYY") %> <br />
+				</div>
+				<div class="qr">
+					<img src="<%= imagePath %>" alt="" />
+				</div>
+			</div>
+			<br />
+			<div>
+				<div class="alignleft">
+					<p>
+						<b>AGENT</b> <br />
+						<br />
+						<%= invoiceData.sellerdetails.sellercompanyname %> <br />
+						<%= invoiceData.sellerdetails.sellercompanyaddress %> <br />
+						GSTIN/UIN : <%= invoiceData.sellerdetails.sellercompanygstno %> <br />
+						State Name : <%= invoiceData.sellerdetails.sellercompanystatename %>, Code : <%= invoiceData.sellerdetails.sellercompanystatecode %>
+					</p>
+				</div>
 
-    @media screen and (max-width: 600px) {
-      .invoice {
-        padding: 10px;
-      }
+				<div class="alignright">
+					<p>
+						<b>BUYER</b> <br /><br>
+						<%= invoiceData.buyerdetails.buyercompanyname %> <br />
+						<%= invoiceData.buyerdetails.buyercompanyaddress %> <br />
+						GSTIN/UIN : <%= invoiceData.buyerdetails.buyercompanygstno %> <br />
+						State Name : <%= invoiceData.buyerdetails.buyercompanystatename %>, Code : <%= invoiceData.buyerdetails.buyercompanystatecode %>
+					</p>
 
-      .qr, .right {
-        text-align: center;
-      }
+					<p></p>
+				</div>
+			</div>
 
-      table {
-        margin-top: 10px;
-      }
-
-      th, td {
-        padding: 4px;
-      }
-
-      .additional-charges, .total, .amount-in-words {
-        margin-top: 10px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="invoice">
-    <div class="invoice-header">
-      <center><h5>TAX INVOICE</h5></center>
-      <div class="right">
-         <b>Invoice No</b>
-        : <%= invoiceData.invoicedetails.invoiceno %> <br>
-         <b>Invoice Date</b>
-        : <%= moment(invoiceData.invoicedetails.invoicedate).format("DD/MM/YYYY") %> <br>
-      </div>
-    </div>
-    <div class="qr">
-      <img src="<%= imagePath %>" width="200px" height="200px" alt="">
-    </div>
-    <h5>
-      <img src="<%= logoPath %>" alt="Logo" width="100px" height="100px">
-      <br />
-      <b> <%= invoiceData.companydetails.companyname %>
-      <br />
-      <%= invoiceData.companydetails.companyaddress %>
-      <br />
-      </b>
-    </h5>
-    <div>
-      <div class="left-align">
-         <p style="margin-top: -5%;" ><b>CONSIGNEE</b> <br>
-            <%= invoiceData.sellerdetails.sellercompanyname %> <br>
-            <%= invoiceData.sellerdetails.sellercompanyaddress %> <br>
-            <%= invoiceData.sellerdetails.sellercompanystatename %> <br>
-            <b>GSTIN/UIN</b> : <%= invoiceData.sellerdetails.sellercompanygstno %> <br> 
-            <b>State Name</b>  : <%= invoiceData.sellerdetails.sellercompanystatename %> <b>Code</b> : <%= invoiceData.sellerdetails.sellercompanystatecode %> <br>
-            <p style="margin-top: -5%;"><b>____________________________________________________________________________</b></p>
-         </div>
-         <div class="right-align">
-            <p style="margin-top: -5%;"><b >BUYER</b> <br>
-               <%= invoiceData.buyerdetails.buyercompanyname %> <br>
-               <%= invoiceData.buyerdetails.buyercompanyaddress %> <br> 
-               <%= invoiceData.buyerdetails.buyercompanystatename %> <br>
-               <b>GSTIN/UIN</b> : <%= invoiceData.buyerdetails.buyercompanygstno %> <br>
-               <b>State Name</b>  : <%= invoiceData.buyerdetails.buyercompanystatename %>, <b>Code</b> : <%= invoiceData.buyerdetails.buyercompanystatecode %> <br> 
-            </p>
-            <p style="margin-top: -5%;"><b>_______________________________________</b></p>
-         </div>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>S/N</th>
-          <th>DESCRIPTION OF GOODS</th>
-          <th>HSN/SAC</th>
-          <th>QUANTITY</th>
-          <th>PRICE</th>
-          <th>AMOUNT</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% var itemQuantitySum = 0; %>
-        <% var itemAmountSum = 0; %>
-        <% var itemTaxSum = 0; %>
-        <% var TotalAmount = 0; %>
-        <% var itemAmount = 0; %>
-        <% if (invoiceData.consignmentdetails.itemdetails.length > 0) { %>
-          <% invoiceData.consignmentdetails.itemdetails.forEach((item, index) => { %>
-            <% itemQuantitySum += item.itemquantity %>
-            <% itemAmount = (item.itemprice * item.itemquantity) %>
-            <% itemAmountSum += itemAmount %>
-            <% itemTaxSum += ((9/100 * (item.itemprice * item.itemquantity)) + (9/100 * (item.itemprice * item.itemquantity)) + (18/100 * (item.itemprice * item.itemquantity))) %>
-            <% TotalAmount += (itemAmountSum + itemTaxSum) %>
+			
+			<table style="border: 1px solid black;">
+				<thead>
+					<tr>
+						<th>S/N</th>
+						<th>DESCRIPTION OF GOODS</th>
+						<th>HSN/SAC</th>
+						<th>QUANTITY</th>
+						<th>PRICE</th>
+						<th>AMOUNT</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var itemQuantitySum = 0; %> <% var itemAmountSum = 0; %> <% var itemTaxSum = 0; %>
+					<% var itemAmount = 0; %> <% if (invoiceData.consignmentdetails.itemdetails.length > 0) { %> <% invoiceData.consignmentdetails.itemdetails.forEach((item, index) => { %> <% itemQuantitySum += item.itemquantity %> <%
+					itemAmount = (item.itemprice * item.itemquantity) %> <% itemAmountSum += itemAmount %> <% itemTaxSum += ((18/100 * itemAmount)) %>
+					<tr>
+						<td><%= index+1 %></td>
+						<td><%= item.itemname %></td>
+						<td><%= item.itemhsn %></td>
+						<td><%= item.itemquantity %></td>
+						<td><%= item.itemprice %></td>
+						<td><%= commaNumber((itemAmount).toFixed(2)) %></td>
+					</tr>
+					<% }); %> <% } %>
+             
             <tr>
-              <td><%= index+1 %></td>
-              <td><%= item.itemname %></td>
-              <td><%= item.itemhsn %></td>
-              <td><%= item.itemquantity %></td>
-              <td><%= item.itemprice %></td>
-              <td><%= commaNumber(itemAmount) %></td>
+              <td></td>
+						<td></td>
+						<td></td>
+            <td></td>
+						<td></td>
+						<td></td>
             </tr>
-          <% }); %>
-        <% } %>
-
-        <tr>
-          <td></td>
-          <td>less : OUTPUT CGST @9%, SGST @9%, IGST @18% ROUND OFF,</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><%= commaNumber((9/100 * itemAmount) + (9/100 * itemAmount) + (18/100 * itemAmount)) %></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <tr>
-      <td></td>
-      <td>TOTAL</td>
-      <td></td>
-      <td><%= itemQuantitySum %></td>
-      <td></td>
-      <td><%= (itemAmountSum + itemTaxSum) %></td>
-    </tr>
-
-    <tr>
-      <td colspan="3">AMOUNT CHARGEABLE (in words)</td>
-      <td colspan="4" ><%= (toWords.convert(TotalAmount)).toUpperCase() %></td>
-    </tr>
-
-    <table>
-      <thead>
-        <tr>
-          <th>S/N</th>
-          <th>HSN/SAC</th>
-          <th>TAXABLE VALUE</th>
-          <th>INTEGRATED TAX</th>
-          <th>TOTAL TAX</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if (invoiceData.consignmentdetails.itemdetails.length > 0) { %>
-          <% invoiceData.consignmentdetails.itemdetails.forEach((item, index) => { %>
-            <tr>
-              <td><%= index+1 %></td>
-              <td><%= item.itemhsn %></td>
-              <td><%= commaNumber((item.itemprice * item.itemquantity)) %></td>
-              <td><%= "9% + 9% + 18%" %></td>
-              <td><%= commaNumber((9/100 * (item.itemprice * item.itemquantity)) + (9/100 * (item.itemprice * item.itemquantity)) + (18/100 * (item.itemprice * item.itemquantity))) %></td>
-            </tr>
-          <% }); %>
-        <% } %>
-
-        <tr>
-          <td></td>
-          <td>TOTAL</td>
+					<tr >
+						<td></td>
+						<td>CGST</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>SGST</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>IGST</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><%= commaNumber((itemTaxSum).toFixed(2)) %></td>
+					</tr>
+          <tr>
+            <td></td>
           <td></td>
           <td></td>
-          <td><%= commaNumber(itemTaxSum) %></td>
-        </tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          </tr>
+					<tr>
+						<td></td>
+						<td>TOTAL</td>
+						<td></td>
+						<td><%= itemQuantitySum %></td>
+						<td></td>
+						<td><%= commaNumber((itemAmountSum + itemTaxSum).toFixed(2)) %></td>
+					</tr>
+               <br />
+					<tr>
+						<td colspan="3">AMOUNT CHARGEABLE (IN WORDS)</td>
+						<td colspan="4"><%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase() %></td>
+					</tr>
+				</tbody>
+			</table>
+			<hr />
+			<table style="border: 1px solid black;">
+				<thead>
+					<tr>
+						<th>S/N</th>
+						<th>HSN/SAC</th>
+						<th>TAXABLE VALUE</th>
+						<th>
+							<table>
+								<tr>
+									<th colspan="3" style="text-align: center;">INTEGRATED TAX</th>
+								</tr>
+								<tr>
+									<td>
+										<table>
+											<tr>
+												<td style="text-align: center;">CGST</td>
+												<td style="text-align: center;">SGST</td>
+												<td style="text-align: center;">IGST</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<table>
+											<tr>
+												<td>RATE</td>
+												<td>AMOUNT</td>
+												<td>RATE</td>
+												<td>AMOUNT</td>
+												<td>RATE</td>
+												<td>AMOUNT</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</th>
 
-        <tr>
-          <td colspan="3">TOTAL AMOUNT(in words)</td>
-          <td colspan="4" ><%= (toWords.convert(itemTaxSum)).toUpperCase() %></td>
-        </tr>
-      </tbody>
-    </table>
+						<th>AMOUNT</th>
+					</tr>
+				</thead>
 
-    <div class="additional-charges">
-      <p style="text-decoration-line: underline;"><b>DISCLAIMER</b></p>
-      <p>WE DECLARED THAT THIS INVOICE SHOWS THE ACTUAL PRICE</p>
-      <p>OF THE GOOD DESCRIBED AND THAT ALL PARTICULAR ARE</p>
-      <b></b>
-      <div>
+				<tbody>
+					<% if (invoiceData.consignmentdetails.itemdetails.length > 0) { %> <% invoiceData.consignmentdetails.itemdetails.forEach((item, index) => { %>
+					<tr>
+						<td><%= index+1 %></td>
+						<td><%= item.itemhsn %></td>
+						<td><%= commaNumber((item.itemprice * item.itemquantity)) %></td>
+						<td>
+							<table>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>0</td>
+								<td>18%</td>
+								<td><%= commaNumber(18/100 * (item.itemprice* item.itemquantity)) %></td>
+							</table>
+						</td>
+						<td><%= commaNumber(18/100 * (item.itemprice* item.itemquantity)) %></td>
+					</tr>
+					<% }); %> <% } %>
+               <br />
+					<tr>
+						<td></td>
+						<td>TOTAL</td>
+						<td></td>
+						<td></td>
+						<td><%= commaNumber(itemTaxSum.toFixed(2)) %></td>
+					</tr>
+               <br />
+					<tr>
+						<td colspan="3">AMOUNT CHARGEABLE(IN WORDS)</td>
+						<td colspan="4"><%= (toWords.convert(itemTaxSum)).toUpperCase()%></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="additional-charges">
+				<p style="text-decoration-line: underline;"><b>DISCLAIMER</b></p>
+				<p style="text-decoration-line: underline; text-align: right;margin-top: -5%;"><b> FOR MAHAVEER TRADING COMPANY</b></p>
+				<div class="bottomleft">
+					<p>
+						WE DECLARED THAT THIS INVOICE SHOWS THE ACTUAL PRICE <br />
+						OF THE GOOD DESCRIBED AND THAT ALL PARTICULAR ARE
+					</p>
+					<b></b>
+				</div>
 
-        <center>This is a computer-generated Invoice.</center>
-      </div>
-    </div>
-  </div>
-</body>
+				<div class="bottomright">
+					<p>Authorized Signature</p>
+				</div>
+				<div class="center">
+					<p>This is a computer generated invoice</p>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
