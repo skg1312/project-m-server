@@ -7,6 +7,7 @@
 			    font-family: Arial, sans-serif;
 			    margin: 0;
 			    padding: 0;
+				padding-top: 30px;
 			    }
 			    .invoice {
 			    max-width: 720px;
@@ -15,13 +16,15 @@
 			    border: 1px solid #000000;
 			    border-radius: 5px;
 			    background-color: #fff;
+		
+
 			    }
 			    .qr img {
 			    margin-left: 100px;
 			    position: absolute;
 			    width: 110px;
 			    height: 110px;
-			    top: 7%;
+			    top: 12%;
 
 			    }
 			    .qr{
@@ -51,13 +54,12 @@
 			    table {
 			    width: 100%;
 			    font-size: small;
+				
 			    }
-			    th, td {
-			    text-align: left;
-			    }
-			    th {
-			    background-color: #f2f2f2;
-			    }
+			    
+
+
+			    
 			    .additional-charges, .total {
 			    margin-top: 20px;
 			    font-size: 10px;
@@ -129,6 +131,15 @@
 			    text-align: center;
 			}
 
+			table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            table, th, td {
+                border: 1px solid #000;
+            }
+
 		
 			  th{
 			    text-align: center;
@@ -159,7 +170,7 @@
         position: absolute;
             display: block;
             width: 80%;
-            opacity: 0.7;
+            opacity: 0.6;
            
             text-align: start;
             background-color: transparent;
@@ -170,10 +181,23 @@
             font-size: 50px;
             transform: rotate(300deg);
             -webkit-transform: rotate(300deg);
-            opacity: 0.9;
+            opacity: 0.7;
             filter: alpha(opacity=40);
             background-color: transparent;
         }
+
+		table:nth-of-type(1) thead th:nth-child(2),
+table:nth-of-type(2) thead th:nth-child(2) {
+  /* DESCRIPTION OF GOODS column for both tables */
+  width: 40%; /* Adjust the width as needed */
+}
+
+table:nth-of-type(1) thead th:nth-child(4),
+table:nth-of-type(2) thead th:nth-child(4) {
+  /* QUANTITY column for both tables */
+  width: 10%; /* Adjust the width as needed */
+}
+
 
   
 		</style>
@@ -184,10 +208,10 @@
     
 		<div class="invoice">
       <div id="background">
-        <p id="bg-text"><%= invoiceData.boardingdetails.watermark %></p>
+        <p id="bg-text">MAHAVEER TRADING COMPANY</p>
     </div>
 			<div class="invoice-header">
-				<p style="text-align: center;font-weight: bold;">TAX INVOICE</p>
+				<p style="text-align: center;font-weight: bold; font-size: 20px;">TAX INVOICE</p>
 				<div class="logo">
                <img src="<%= logoPath %>" alt="Logo">
             </div>
@@ -264,29 +288,14 @@
 					</tr>
 					<% }); %> <% } %>
              
-            <tr>
-              <td></td>
-						<td></td>
-						<td></td>
-            <td></td>
-						<td></td>
-						<td></td>
-            </tr>
-            <tr>
-              <td></td>
-						<td></td>
-						<td></td>
-            <td></td>
-						<td></td>
-						<td></td>
-            </tr>
+          
 					<tr class="gst" style="border-top: 1px solid #000;" >
 						<td></td>
 						<td>CGST</td>
 						<td></td>
 						<td></td>
 						<td></td>
-						<td>-</td>
+						<td>0</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -294,7 +303,7 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td>-</td>
+						<td>0</td>
 					</tr>
 					<tr class="igst">
 						<td></td>
@@ -304,22 +313,7 @@
 						<td></td>
 						<td><%= commaNumber((itemTaxSum).toFixed(2)) %></td>
 					</tr>
-          <tr>
-            <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          </tr>
+          
 					<tr>
 						<td></td>
 						<td>TOTAL</td>
@@ -330,7 +324,7 @@
 					</tr>
                <br />
 					<tr>
-						<td colspan="3">AMOUNT CHARGEABLE (IN WORDS)</td>
+						<td colspan="2">AMOUNT CHARGEABLE (IN WORDS)</td>
 						<td colspan="4"><%= (toWords.convert(itemAmountSum + itemTaxSum)).toUpperCase() %></td>
 					</tr>
 				</tbody>
@@ -402,7 +396,7 @@
                <br />
 					<tr>
 						<td colspan="3">AMOUNT CHARGEABLE(IN WORDS)</td>
-						<td colspan="4"><%= (toWords.convert(itemTaxSum)).toUpperCase()%></td>
+						<td colspan="7"><%= (toWords.convert(itemTaxSum)).toUpperCase()%></td>
 					</tr>
 				</tbody>
 			</table>
