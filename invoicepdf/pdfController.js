@@ -71,10 +71,12 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
       if (result) {
         const html = result;
         let options = {
-          "height": "14.25in",
-          "width": "11.25in",
-          "header": { "height": "0mm" },
-          "footer": { "height": "0mm" },
+          // "height": "14.25in",
+          // "width": "11.25in",
+          // "header": { "height": "0mm" },
+          // "footer": { "height": "0mm" },
+          format: 'A4',
+          orientation: 'portrait',
           childProcessOptions: {
             env: {
               OPENSSL_CONF: '/dev/null',
