@@ -71,10 +71,10 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
       if (result) {
         const html = result;
         let options = {
-          // "height": "14.25in",
+          "height": "12.25in",
           "width": "11.25in",
-          // "header": { "height": "0mm" },
-          // "footer": { "height": "0mm" },
+          "header": { "height": "0mm" },
+          "footer": { "height": "0mm" },
           childProcessOptions: {
             env: {
               OPENSSL_CONF: '/dev/null',
