@@ -275,6 +275,7 @@ table:nth-of-type(2) thead th:nth-child(4) {
 					</tr>
 				</thead>
 				<tbody>
+					<% var interStateTax = (invoiceData.sellerdetails.sellercompanystatecode == invoiceData.buyerdetails.buyercompanystatecode) ? false : true; %>
 					<% var itemQuantitySum = 0; %> <% var itemAmountSum = 0; %> <% var itemTaxSum = 0; %>
 					<% var itemAmount = 0; %> <% if (invoiceData.consignmentdetails.itemdetails.length > 0) { %> <% invoiceData.consignmentdetails.itemdetails.forEach((item, index) => { %> <% itemQuantitySum += item.itemquantity %> <%
 					itemAmount = (item.itemprice * item.itemquantity) %> <% itemAmountSum += itemAmount %> <% itemTaxSum += ((18/100 * itemAmount)) %>
@@ -295,7 +296,11 @@ table:nth-of-type(2) thead th:nth-child(4) {
 						<td></td>
 						<td></td>
 						<td></td>
+						<% if(interStateTax == true){ %>
 						<td>-</td>
+						<% } else { %>
+						<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
+						<% } %>
 					</tr>
 					<tr>
 						<td></td>
@@ -303,7 +308,11 @@ table:nth-of-type(2) thead th:nth-child(4) {
 						<td></td>
 						<td></td>
 						<td></td>
-						<td>-</td>
+						<% if(interStateTax == true){ %>
+							<td>-</td>
+							<% } else { %>
+							<td><%= commaNumber((itemTaxSum/2).toFixed(2)) %></td>
+							<% } %>
 					</tr>
 					<tr class="igst">
 						<td></td>
@@ -311,7 +320,11 @@ table:nth-of-type(2) thead th:nth-child(4) {
 						<td></td>
 						<td></td>
 						<td></td>
-						<td><%= commaNumber((itemTaxSum).toFixed(2)) %></td>
+						<% if(interStateTax == true){ %>
+							<td><%= commaNumber((itemTaxSum).toFixed(2)) %></td>
+							<% } else { %>
+							<td>-</td>
+							<% } %>		
 					</tr>
           
 					<tr>
@@ -370,12 +383,21 @@ table:nth-of-type(2) thead th:nth-child(4) {
 						<td><%= item.itemhsn %></td>
 						<td><%= commaNumber((item.itemprice * item.itemquantity)) %></td>
 						
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>0</td>
-								<td>18%</td>
-								<td><%= commaNumber(18/100 * (item.itemprice* item.itemquantity)) %></td>
+						<% if(interStateTax == true){ %>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>18%</td>
+							<td><%= commaNumber(18/100 * (item.itemprice* item.itemquantity)) %></td>
+							<% } else { %>
+							<td>9%</td>
+							<td><%= commaNumber(9/100 * (item.itemprice* item.itemquantity)) %></td>
+							<td>9%</td>
+							<td><%= commaNumber(9/100 * (item.itemprice* item.itemquantity)) %></td>
+							<td>-</td>
+							<td>-</td>
+							<% } %>
 							
 						<td><%= commaNumber(18/100 * (item.itemprice* item.itemquantity)) %></td>
 					</tr>
