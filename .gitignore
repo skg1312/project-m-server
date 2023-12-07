@@ -1,0 +1,7 @@
+node_modules/
+.idea
+*.zip
+*.pdf
+notes.md
+.env.local
+.DS_Store
