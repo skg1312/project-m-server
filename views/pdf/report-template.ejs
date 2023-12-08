@@ -208,7 +208,7 @@ table:nth-of-type(2) thead th:nth-child(4) {
     
 		<div class="invoice">
       <div id="background">
-        <p id="bg-text">MAHAVEER TRADING</p>
+        <p id="bg-text"><%= invoiceData.boardingdetails.watermark %></p>
     </div>
 			<div class="invoice-header">
 				<p style="text-align: center;font-weight: bold; font-size: 20px;">TAX INVOICE</p>
@@ -381,7 +381,7 @@ table:nth-of-type(2) thead th:nth-child(4) {
 					<tr>
 						<td><%= index+1 %></td>
 						<td><%= item.itemhsn %></td>
-						<td><%= commaNumber((item.itemprice * item.itemquantity)) %></td>
+						<td><%= commaNumber((item.itemprice * item.itemquantity).toFixed(2)) %></td>
 						
 						<% if(interStateTax == true){ %>
 							<td>-</td>
@@ -389,17 +389,17 @@ table:nth-of-type(2) thead th:nth-child(4) {
 							<td>-</td>
 							<td>-</td>
 							<td>18%</td>
-							<td><%= commaNumber(18/100 * (item.itemprice* item.itemquantity)) %></td>
+							<td><%= commaNumber((18/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %></td>
 							<% } else { %>
 							<td>9%</td>
-							<td><%= commaNumber(9/100 * (item.itemprice* item.itemquantity)) %></td>
+							<td><%= commaNumber((9/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %></td>
 							<td>9%</td>
-							<td><%= commaNumber(9/100 * (item.itemprice* item.itemquantity)) %></td>
+							<td><%= commaNumber((9/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %></td>
 							<td>-</td>
 							<td>-</td>
 							<% } %>
 							
-						<td><%= commaNumber(18/100 * (item.itemprice* item.itemquantity)) %></td>
+						<td><%= commaNumber((18/100 * (item.itemprice* item.itemquantity)).toFixed(2)) %></td>
 					</tr>
 					<% }); %> <% } %>
                <br />
