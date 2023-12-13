@@ -73,9 +73,8 @@ router.put('/:id', async (req, res) => {
 
 // DELETE: Delete a consigment by ID
 router.delete('/:id', async (req, res) => {
- 
   try {
-    const deletedConsignment = await Consignment.findByIdAndRemove(req.params.id);
+    const deletedConsignment = await Consignment.findByIdAndDelete(req.params.id);
 
     if (!deletedConsignment) {
       res.status(404).json({ error: 'Consignment not found' });
@@ -83,7 +82,7 @@ router.delete('/:id', async (req, res) => {
       res.json(deletedConsignment);
     }
   } catch (err) {
-    res.status(500).json({ error: `${err}Error deleting consignment` });
+    res.status(500).json({ error: `Error deleting consignment: ${err.message}` });
   }
 });
 
