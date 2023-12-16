@@ -56,9 +56,7 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
     // Generate QR code and get base64 string
     const qrCodeData = `${API}download/${resultid}`;
     const qrCodeBase64 = await generateQRCodeBase64(qrCodeData);
-    console.log('QR Code Base64:', qrCodeBase64);
 
-    console.log('Logo Path:', logoPath);
     // Render PDF HTML
     ejs.renderFile('./views/pdf/report-template.ejs', {
       invoiceData: result,
