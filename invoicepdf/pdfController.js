@@ -68,8 +68,8 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
       toWords: toWords
     }, function (err, result) {
       if (result) {
-        const html = result;
-        let options = {
+        const html1 = result;
+        let options1 = {
           // "height": "12.25in",
           // "width": "11.25in",
           // "header": { "height": "0mm" },
@@ -82,7 +82,7 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
           }
         };
 
-        pdf.create(html, options)
+        pdf.create(html1, options1)
           .toFile(targetLocation, function (error) {
             if (error) {
               console.error('Error creating PDF:', error);
@@ -97,13 +97,51 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
         if (callback) callback(null, err);
       }
     });
+        // Render PDF HTML
+        ejs.renderFile('./views/pdf/report-template.ejs', {
+          header: "ORIGINAL FOR RECIPIENT",
+          invoiceData: result,
+          imagePath: qrCodeBase64,
+          logoPath: `data:image/jpeg;base64,${fs.readFileSync(logoPath, { encoding: 'base64' })}`,
+          moment: moment,
+          commaNumber: commaNumber,
+          toWords: toWords
+        }, function (err, result) {
+          if (result) {
+            const html2 = result;
+            let options2 = {
+              // "height": "12.25in",
+              // "width": "11.25in",
+              // "header": { "height": "0mm" },
+              // "footer": { "height": "0mm" },
+              format: 'A4',
+              childProcessOptions: {
+                env: {
+                  OPENSSL_CONF: '/dev/null',
+                },
+              }
+            };
+    
+            pdf.create(html2, options2)
+              .toFile(targetLocation, function (error) {
+                if (error) {
+                  console.error('Error creating PDF:', error);
+                  if (callback) callback(null, error);
+                } else {
+                  console.log('PDF created successfully.');
+                  if (callback) callback(targetLocation);
+                }
+              });
+          } else {
+            console.error('An error occurred during render ejs:', err);
+            if (callback) callback(null, err);
+          }
+        });
   } catch (error) {
     console.error('Error:', error);
     if (callback) callback(null, error);
   }
-
-  
-};
+  };
 
 const generateQRCodeBase64 = async (data) => {
   try {
