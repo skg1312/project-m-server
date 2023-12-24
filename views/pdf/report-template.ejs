@@ -20,8 +20,8 @@
 		.qr img {
 			margin-left: 100px;
 			position: absolute;
-			width: 110px;
-			height: 110px;
+			width: 80px;
+			height: 80px;
 			top: 12%;
 		}
 		.qr {
@@ -118,7 +118,7 @@
 		.alignright {
 			display: flex;
 			margin-left: 55%;
-			margin-top: -20%;
+			margin-top: -17%;
 			border-bottom: 2px solid black;
 			font-size: 10px;
 			width: 45%;
@@ -233,24 +233,25 @@
 			<div>
 				<div class="alignleft">
 					<p>
-						<b>AGENT</b>
+						<b>AGENT</b> <br>
 						<%= invoiceData.sellerdetails.sellercompanyname %> <br />
 						<%= invoiceData.sellerdetails.sellercompanyaddress %> <br />
 						GSTIN/UIN : <%= invoiceData.sellerdetails.sellercompanygstno %> <br />
 						State Name : <%= invoiceData.sellerdetails.sellercompanystatename %>, Code : <%= invoiceData.sellerdetails.sellercompanystatecode %>
+						<br>
 					</p>
 				</div>
 
 				<div class="alignright">
 					<p>
-						<b>BUYER</b>
+						<b>BUYER</b> <br>
 						<%= invoiceData.buyerdetails.buyercompanyname %> <br />
 						<%= invoiceData.buyerdetails.buyercompanyaddress %> <br />
 						GSTIN/UIN : <%= invoiceData.buyerdetails.buyercompanygstno %> <br />
 						State Name : <%= invoiceData.buyerdetails.buyercompanystatename %>, Code : <%= invoiceData.buyerdetails.buyercompanystatecode %>
+						<br>
 					</p>
 
-					<p></p>
 				</div>
 			</div>
 
