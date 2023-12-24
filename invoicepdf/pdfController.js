@@ -59,46 +59,7 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
 
     // Render PDF HTML
     ejs.renderFile('./views/pdf/report-template.ejs', {
-      header: 'ORIGINAL FOR RECIPIENT',
-      invoiceData: result,
-      imagePath: qrCodeBase64,
-      logoPath: `data:image/jpeg;base64,${fs.readFileSync(logoPath, { encoding: 'base64' })}`,
-      moment: moment,
-      commaNumber: commaNumber,
-      toWords: toWords
-    }, function (err, result) {
-      if (result) {
-        const html = result;
-        let options = {
-          // "height": "12.25in",
-          // "width": "11.25in",
-          // "header": { "height": "0mm" },
-          // "footer": { "height": "0mm" },
-          format: 'A4',
-          childProcessOptions: {
-            env: {
-              OPENSSL_CONF: '/dev/null',
-            },
-          }
-        };
-
-        pdf.create(html, options)
-          .toFile(targetLocation, function (error) {
-            if (error) {
-              console.error('Error creating PDF:', error);
-              if (callback) callback(null, error);
-            } else {
-              console.log('PDF created successfully.');
-              if (callback) callback(targetLocation);
-            }
-          });
-      } else {
-        console.error('An error occurred during render ejs:', err);
-        if (callback) callback(null, err);
-      }
-    });
-    ejs.renderFile('./views/pdf/report-template.ejs', {
-      header: 'DUPLICATE FOR TRANSPORTER',
+      header: "ORIGINAL FOR RECIPIENT",
       invoiceData: result,
       imagePath: qrCodeBase64,
       logoPath: `data:image/jpeg;base64,${fs.readFileSync(logoPath, { encoding: 'base64' })}`,
