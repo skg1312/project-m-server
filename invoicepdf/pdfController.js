@@ -38,6 +38,7 @@ exports.generatePdf = async (result, callback) => {
   const fileId = result._id + '.pdf';
   const targetLocation = `./public/download/${fileId}`;
   const logoLocation = `./public/logo/logo.jpg`;
+  const publicFolder = path.join(__dirname, '..');
   const logoPath = path.join(publicFolder, logoLocation);
 
   try {
