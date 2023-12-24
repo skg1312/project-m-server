@@ -33,33 +33,25 @@ const toWords = new ToWords({
   }
 });
 
-exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, result, callback) => {
+exports.generatePdf = async (result, callback) => {
   const resultid = result._id;
   const fileId = result._id + '.pdf';
   const targetLocation = `./public/download/${fileId}`;
-  const imageLocation = `./public/qrImages/`;
   const logoLocation = `./public/logo/logo.jpg`;
-  const publicFolder = path.join(__dirname, '..');
   const logoPath = path.join(publicFolder, logoLocation);
 
   try {
-    // If PDF already exists, delete it and create a new PDF
-    if (fs.existsSync(targetLocation)) {
-      fs.unlinkSync(targetLocation);
-    }
-
-    const qrCodeFilename = result.invoicedetails.invoiceno + ".png";
-    const currentDirectory = __dirname;
-    const publicFolder = path.join(currentDirectory, '..');
-    const imagePath = path.join(publicFolder, imageLocation, qrCodeFilename);
-
-    // Generate QR code and get base64 string
-    const qrCodeData = `${API}download/${resultid}`;
-    const qrCodeBase64 = await generateQRCodeBase64(qrCodeData);
+      // If PDF already exists, delete it and create a new PDF
+      if (fs.existsSync(targetLocation)) {
+        fs.unlinkSync(targetLocation);
+      }
+  
+      // Generate QR code and get base64 string
+      const qrCodeData = `${API}download/${resultid}`;
+      const qrCodeBase64 = await generateQRCodeBase64(qrCodeData);
 
     // Render PDF HTML
-    ejs.renderFile('./views/pdf/report-template.ejs', {
-      header: "ORIGINAL FOR RECIPIENT",
+    ejs.renderFile('./views/pdf/report-template-original.ejs', {
       invoiceData: result,
       imagePath: qrCodeBase64,
       logoPath: `data:image/jpeg;base64,${fs.readFileSync(logoPath, { encoding: 'base64' })}`,
@@ -98,8 +90,7 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
       }
     });
         // Render PDF HTML
-        ejs.renderFile('./views/pdf/report-template.ejs', {
-          header: "DUPLICATE FOR TRANSPORTER",
+        ejs.renderFile('./views/pdf/report-template-duplicate.ejs', {
           invoiceData: result,
           imagePath: qrCodeBase64,
           logoPath: `data:image/jpeg;base64,${fs.readFileSync(logoPath, { encoding: 'base64' })}`,
