@@ -83,7 +83,7 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
         };
 
         pdf.create(html1, options1)
-          .toFile(targetLocation, function (error) {
+          .toFile('original'+ targetLocation , function (error) {
             if (error) {
               console.error('Error creating PDF:', error);
               if (callback) callback(null, error);
@@ -99,7 +99,7 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
     });
         // Render PDF HTML
         ejs.renderFile('./views/pdf/report-template.ejs', {
-          header: "ORIGINAL FOR RECIPIENT",
+          header: "DUPLICATE FOR TRANSPORTER",
           invoiceData: result,
           imagePath: qrCodeBase64,
           logoPath: `data:image/jpeg;base64,${fs.readFileSync(logoPath, { encoding: 'base64' })}`,
@@ -123,7 +123,7 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
             };
     
             pdf.create(html2, options2)
-              .toFile(targetLocation, function (error) {
+              .toFile('duplicate'+ targetLocation, function (error) {
                 if (error) {
                   console.error('Error creating PDF:', error);
                   if (callback) callback(null, error);
