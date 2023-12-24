@@ -2,205 +2,198 @@
 <html>
 	<head>
 		<style>
-			           /* Customize additional styles as needed */
-					   body {
-			    font-family: Arial, sans-serif;
-			    margin: 0;
-			    padding: 0;
-				padding-top: 25px;
-			    }
-			    .invoice {
-			    max-width: 720px;
-			    margin: 0 auto;
-			    padding: 20px;
-			    border: 1px solid #000000;
-			    border-radius: 5px;
-			    background-color: #fff;
+			/* Customize additional styles as needed */
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			padding-top: 25px;
+		}
+		.invoice {
+			max-width: 720px;
+			margin: 0 auto;
+			padding: 20px;
+			border: 1px solid #000000;
+			border-radius: 5px;
+			background-color: #fff;
+		}
+		.qr img {
+			margin-left: 100px;
+			position: absolute;
+			width: 110px;
+			height: 110px;
+			top: 12%;
+		}
+		.qr {
+			border-bottom: 3px solid black;
+			width: 45%;
+			border-bottom: 3px solid black;
+			margin-top: -4%;
+			margin-left: 55%;
+		}
+		.left {
+			border-bottom: 2px solid black;
+			font-size: 10px;
+			margin-left: 55%;
+			/* margin-left: 73.5%; */
+			margin-top: -2%;
+		}
+		.right {
+			border-top: 3px solid black;
+			font-size: 10px;
+			text-align: left;
+			/* margin-left: 73.5%; */
+			width: 45%;
+			border-bottom: 2px solid black;
+		}
+		table {
+			width: 100%;
+			font-size: small;
+		}
 		
-
-			    }
-			    .qr img {
-			    margin-left: 100px;
-			    position: absolute;
-			    width: 110px;
-			    height: 110px;
-			    top: 12%;
-
-			    }
-			    .qr{
-			        border-bottom: 3px solid black;
-			        width: 45%;
-			        border-bottom: 3px solid black;
-			        margin-top: -4%;
-			        margin-left: 55%;
-			    }
-			    .left{
-			        border-bottom: 2px solid black;
-			        font-size: 10px;
-			        margin-left: 55%;
-			        /* margin-left: 73.5%; */
-			        margin-top: -2%;
-
-
-			    }
-			    .right {
-			    border-top: 3px solid black;
-			    font-size: 10px;
-			    text-align: left;
-			    /* margin-left: 73.5%; */
-			    width: 45%;
-			    border-bottom: 2px solid black;
-			    }
-			    table {
-			    width: 100%;
-			    font-size: small;
-				
-			    }
-			    
-
-
-			    
-			    .additional-charges, .total {
-			    margin-top: 10px;
-			    font-size: 10px;
-			    }
-			    .total {
-			    text-align: right;
-			    font-weight: bold;
-			    margin-top: -3%;
-			    }
-			    .amount-in-words {
-			    margin-top: 10px;
-			    font-style: italic;
-			    }
-			    @media screen and (max-width: 600px) {
-			    .invoice {
-			    padding: 10px;
-			    }
-			    .qr, .right {
-			    text-align: center;
-			    }
-			    table {
-			    margin-top: 10px;
-			    }
-			    th, td {
-			    padding: 4px;
-			    }
-			    .additional-charges, .total, .amount-in-words {
-			    margin-top: 10px;
-			    }
-			    }
-			.logo img{
-			    width: 10%;
-			    height: 10%;
+		.additional-charges,
+		.total {
+			margin-top: 10px;
+			font-size: 10px;
+		}
+		.total {
+			text-align: right;
+			font-weight: bold;
+			margin-top: -3%;
+		}
+		.amount-in-words {
+			margin-top: 10px;
+			font-style: italic;
+		}
+		@media screen and (max-width: 600px) {
+			.invoice {
+				padding: 10px;
 			}
-			.comAddress{
-			    display: flex;
+			.qr,
+			.right {
+				text-align: center;
 			}
-			.comAddress p{
-			    display: flex;
-
-			}
-			.companyname{
-			    font-size: 15px;
-			    font-weight: bold;
-			    margin-left: 12%;
-			    margin-top: -10%
-			}
-			.companyname1{
-			    margin-top: -5%;
-			    margin-left: 12%;
-			}
-			h5{
-			    text-align: center;
-			}
-			.alignleft{
-			    display: flex;
-			    border-bottom: 2px solid black;
-			    width: 45%;
-			    font-size: 10px;
-			}
-			.alignright{
-			    display: flex;
-			    margin-left: 55%;
-			    margin-top: -17%;
-			    border-bottom: 2px solid black;
-			    font-size: 10px;
-			}
-			td{
-			    text-align: center;
-			}
-
 			table {
-                border-collapse: collapse;
-                width: 100%;
-            }
-
-            table, th, td {
-                border: 1px solid #000;
-            }
-
+				margin-top: 10px;
+			}
+			th,
+			td {
+				padding: 4px;
+			}
+			.additional-charges,
+			.total,
+			.amount-in-words {
+				margin-top: 10px;
+			}
+		}
+		.logo img {
+			width: 10%;
+			height: 10%;
+		}
+		.comAddress {
+			display: flex;
+		}
+		.comAddress p {
+			display: flex;
+		}
+		.companyname {
+			font-size: 15px;
+			font-weight: bold;
+			margin-left: 12%;
+			margin-top: -10%;
+		}
+		.companyname1 {
+			margin-top: -5%;
+			margin-left: 12%;
+		}
+		h5 {
+			text-align: center;
+		}
+		.alignleft {
+			display: flex;
+			border-bottom: 2px solid black;
+			width: 45%;
+			font-size: 10px;
+		}
+		.alignright {
+			display: flex;
+			margin-left: 55%;
+			/* margin-top: -17%; */
+			border-bottom: 2px solid black;
+			font-size: 10px;
+			width: 45%;
+		}
+		td {
+			text-align: center;
+		}
 		
-			  th{
-			    text-align: center;
-			  }
-			  .bottomleft{
-			    display: flex;
-			  }
-			  .bottomright{
-			    display: flex;
-			    margin-left: 80%;
-			   
-			  }
-			  .center{
-          padding-top: 15px;
-			    text-align: center;
-			  }
-
-        .table2{
-          margin-top: -4%;
-        }
-
-        #background {
-          margin-left: -10%;
-         margin-top: 10%;
-         height: 100%;
-         padding-top: 6%;
-         padding-right: 5%;
-        position: absolute;
-            display: block;
-            width: 80%;
-            opacity: 0.6;
-           
-            text-align: start;
-            background-color: transparent;
-          
-        }
-        #bg-text {
-            color: lightgrey;
-            font-size: 35x;
-            transform: rotate(300deg);
-            -webkit-transform: rotate(300deg);
-            opacity: 0.7;
-            filter: alpha(opacity=40);
-            background-color: transparent;
-        }
-
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		
+		table,
+		th,
+		td {
+			border: 1px solid #000;
+		}
+		
+		th {
+			text-align: center;
+		}
+		.bottomleft {
+			display: flex;
+		}
+		.bottomright {
+			display: flex;
+			margin-left: 80%;
+		}
+		.center {
+			padding-top: 15px;
+			text-align: center;
+		}
+		
+		.table2 {
+			margin-top: -4%;
+		}
+		
+		#background {
+			margin-left: -10%;
+			margin-top: 10%;
+			height: 100%;
+			padding-top: 6%;
+			padding-right: 5%;
+			position: absolute;
+			display: block;
+			width: 80%;
+			opacity: 0.6;
+		
+			text-align: start;
+			background-color: transparent;
+		}
+		#bg-text {
+			color: lightgrey;
+			font-size: 35x;
+			transform: rotate(300deg);
+			-webkit-transform: rotate(300deg);
+			opacity: 0.7;
+			filter: alpha(opacity=40);
+			background-color: transparent;
+		}
+		
 		table:nth-of-type(1) thead th:nth-child(2),
-table:nth-of-type(2) thead th:nth-child(2) {
-  /* DESCRIPTION OF GOODS column for both tables */
-  width: 40%; /* Adjust the width as needed */
-}
-
-table:nth-of-type(1) thead th:nth-child(4),
-table:nth-of-type(2) thead th:nth-child(4) {
-  /* QUANTITY column for both tables */
-  width: 10%; /* Adjust the width as needed */
-}
-
-
-  
-		</style>
+		table:nth-of-type(2) thead th:nth-child(2) {
+			/* DESCRIPTION OF GOODS column for both tables */
+			width: 40%; /* Adjust the width as needed */
+		}
+		
+		table:nth-of-type(1) thead th:nth-child(4),
+		table:nth-of-type(2) thead th:nth-child(4) {
+			/* QUANTITY column for both tables */
+			width: 10%; /* Adjust the width as needed */
+		}
+		
+				</style>
 
     
 	</head>
