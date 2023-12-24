@@ -83,7 +83,7 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
         };
 
         pdf.create(html1, options1)
-          .toFile('original'+ targetLocation , function (error) {
+          .toFile(targetLocation , function (error) {
             if (error) {
               console.error('Error creating PDF:', error);
               if (callback) callback(null, error);
@@ -123,7 +123,7 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
             };
     
             pdf.create(html2, options2)
-              .toFile('duplicate'+ targetLocation, function (error) {
+              .toFile(targetLocation, function (error) {
                 if (error) {
                   console.error('Error creating PDF:', error);
                   if (callback) callback(null, error);
