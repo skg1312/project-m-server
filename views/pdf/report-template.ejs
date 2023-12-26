@@ -28,21 +28,19 @@
         top: 25%;
       }
       .qr {
-        border-bottom: 3px solid black;
         width: 45%;
-        border-bottom: 3px solid black;
+        border-bottom: 2px solid black;
         margin-top: -4%;
         margin-left: 55%;
       }
-      .left {
+      .right {
         border-bottom: 2px solid black;
         font-size: 10px;
-        border-top: 2px solid black;
         margin-left: 55%;
         /* margin-left: 73.5%; */
         margin-top: -2%;
       }
-      .right {
+      .left {
         border-top: 2px solid black;
         font-size: 10px;
         text-align: left;
@@ -229,11 +227,11 @@
             State Name : <%= invoiceData.companydetails.companystate %>
           </p>
         </div>
-        <div class="right">
+        <div class="left">
           <b>Invoice No</b>
           : <%= invoiceData.invoicedetails.invoiceno %>
         </div>
-        <div class="left">
+        <div class="right">
           <b>Dated</b>
           : <%=
           moment(invoiceData.invoicedetails.invoicedate).format("DD/MM/YYYY") %>
