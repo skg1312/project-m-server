@@ -231,13 +231,13 @@
         </div>
         <div class="right">
           <b>Invoice No</b>
-          : <%= invoiceData.invoicedetails.invoiceno %><br />
+          : <%= invoiceData.invoicedetails.invoiceno %>
         </div>
         <div class="left">
           <b>Dated</b>
           : <%=
           moment(invoiceData.invoicedetails.invoicedate).format("DD/MM/YYYY") %>
-          <br />
+         
         </div>
         <div class="qr">
           <img src="<%= imagePath %>" alt="" />
