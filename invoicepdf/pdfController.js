@@ -99,7 +99,6 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
     });
         // Render PDF HTML
         ejs.renderFile('./views/pdf/report-template.ejs', {
-          header: "DUPLICATE FOR TRANSPORTER",
           invoiceData: result,
           imagePath: qrCodeBase64,
           logoPath: `data:image/jpeg;base64,${fs.readFileSync(logoPath, { encoding: 'base64' })}`,
