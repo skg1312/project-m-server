@@ -114,20 +114,7 @@
 		h5 {
 			text-align: center;
 		}
-		.alignleft {
-			display: flex;
-			border-bottom: 2px solid black;
-			width: 45%;
-			font-size: 10px;
-		}
-		.alignright {
-			display: flex;
-			margin-left: 55%;
-			margin-top: -17%;
-			border-bottom: 2px solid black;
-			font-size: 10px;
-			width: 45%;
-		}
+
 		td {
 			text-align: center;
 		}
@@ -205,6 +192,20 @@
 		font-size: 10px;
       }
 		
+	  /* .alignleft {
+			display: flex;
+			border-bottom: 2px solid black;
+			width: 45%;
+			font-size: 10px;
+		}
+		.alignright {
+			display: flex;
+			margin-left: 55%;
+			margin-top: -17%;
+			border-bottom: 2px solid black;
+			font-size: 10px;
+			width: 45%;
+		} */
 				</style>
 
     
@@ -242,30 +243,7 @@
 				</div>
 			</div>
 			<br />
-			<!-- <div>
-				<div class="alignleft">
-					<p>
-						<b>AGENT</b> <br>
-						<%= invoiceData.sellerdetails.sellercompanyname %> <br />
-						<%= invoiceData.sellerdetails.sellercompanyaddress %> <br />
-						GSTIN/UIN : <%= invoiceData.sellerdetails.sellercompanygstno %> <br />
-						State Name : <%= invoiceData.sellerdetails.sellercompanystatename %>, Code : <%= invoiceData.sellerdetails.sellercompanystatecode %>
-						<br>
-					</p>
-				</div>
 
-				<div class="alignright">
-					<p>
-						<b>BUYER</b> <br>
-						<%= invoiceData.buyerdetails.buyercompanyname %> <br />
-						<%= invoiceData.buyerdetails.buyercompanyaddress %> <br />
-						GSTIN/UIN : <%= invoiceData.buyerdetails.buyercompanygstno %> <br />
-						State Name : <%= invoiceData.buyerdetails.buyercompanystatename %>, Code : <%= invoiceData.buyerdetails.buyercompanystatecode %>
-						<br>
-					</p>
-
-				</div>
-			</div> -->
 			<div class="d-flex">
 				<div>
 				  <p>
@@ -282,7 +260,7 @@
 		
 				<div>
 				  <p>
-					<b>BUYER</b>
+					<b>BUYER</b><br />
 					<%= invoiceData.buyerdetails.buyercompanyname %> <br />
 					<%= invoiceData.buyerdetails.buyercompanyaddress %> <br />
 					GSTIN/UIN : <%= invoiceData.buyerdetails.buyercompanygstno %> <br />
