@@ -11,7 +11,7 @@ const { ToWords } = require('to-words');
 
 app.use(express.static('public'));
 
-var API = process.env.DOWNLOAD_BASE_URL || `https://squid-app-og92j.ondigitalocean.app/`;
+var API = `https://project-m-client.vercel.app/`;
 
 const toWords = new ToWords({
   localeCode: 'en-IN',
@@ -54,7 +54,7 @@ exports.generatePdf = async (info = { filename: 'pdf_file', format: 'A4' }, resu
     const imagePath = path.join(publicFolder, imageLocation, qrCodeFilename);
 
     // Generate QR code and get base64 string
-    const qrCodeData = `${API}download/${resultid}`;
+    const qrCodeData = `${API}pdf/${resultid}`;
     const qrCodeBase64 = await generateQRCodeBase64(qrCodeData);
 
         // Render PDF HTML
