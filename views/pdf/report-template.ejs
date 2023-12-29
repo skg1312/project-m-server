@@ -211,7 +211,7 @@
        }
 
         .border-bottom{
-             border: 1px solid black;
+             border-bottom: 1px solid black;
          }
     </style>
   </head>
@@ -259,7 +259,7 @@
       <br />
       <div>
         <div>
-          <p class="alignleft">
+          <div class="alignleft">
           
                <div class="border-bottom"> <b>Vehicle Number :</b><%= invoiceData.vehicledetails.vechiclenumber %><div>
                    <br />
@@ -272,11 +272,11 @@
             State Name : <%= invoiceData.sellerdetails.sellercompanystatename
             %>, Code : <%= invoiceData.sellerdetails.sellercompanystatecode %>
             <br />
-          </p>
+          </div>
         </div>
 
         <div>
-          <p class="alignright">
+          <div class="alignright">
          
                 <div class="border-bottom"> <b> Driver Number: </b><%= invoiceData.vehicledetails.drivernumber %></div> <br />
                  
@@ -287,7 +287,7 @@
             State Name : <%= invoiceData.buyerdetails.buyercompanystatename %>,
             Code : <%= invoiceData.buyerdetails.buyercompanystatecode %>
             <br />
-          </p>
+          </div>
         </div>
       </div>
       
