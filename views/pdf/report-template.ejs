@@ -129,6 +129,22 @@
         width: 45%;
       }
 
+     .alignleft {
+        display: flex;
+        border-bottom: 1px solid black;
+        width: 45%;
+        font-size: 10px;
+         margin-top: -2.2%;
+      }
+      .alignright {
+        display: flex;
+        margin-left: 55%;
+        margin-top: -17.5%;
+        border-bottom: 1px solid black;
+        font-size: 10px;
+        width: 45%;
+      }
+
       td {
         text-align: center;
       }
@@ -259,10 +275,11 @@
       <br />
       <div>
         <div>
+           <p class="alignlefttext"><b>Vehicle Number :</b><%= invoiceData.vehicledetails.vechiclenumber %></p>
           <p class="alignleft">
           
-               <b>Vehicle Number :</b><%= invoiceData.vehicledetails.vechiclenumber %>
-                   <br />
+               
+                
             
             <b>AGENT</b> <br />
             <%= invoiceData.sellerdetails.sellercompanyname %> <br />
@@ -276,9 +293,10 @@
         </div>
 
         <div>
+           <p class="alignrighttext"><b> Driver Number: </b><%= invoiceData.vehicledetails.drivernumber %>  <br /></p>
           <p class="alignright">
          
-                <b> Driver Number: </b><%= invoiceData.vehicledetails.drivernumber %>  <br />
+                
                  
             <b>BUYER</b><br>
             <%= invoiceData.buyerdetails.buyercompanyname %> <br />
