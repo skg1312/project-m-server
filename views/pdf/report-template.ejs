@@ -233,14 +233,11 @@
             State Name : <%= invoiceData.companydetails.companystate %>
           </p>
         </div>
+      
         <div class="left">
           <b>Invoice No</b>
           : <%= invoiceData.invoicedetails.invoiceno %><br />
-            <p>
-         <b>Vehicle Number :</b><%= invoiceData.vehicledetails.vechiclenumber %>
-                          <b> Driver Number: </b>
-                         <%= invoiceData.vehicledetails.drivernumber %>
-      </p>
+            
         </div>
         <div class="right">
           <b>Dated</b>
@@ -251,11 +248,16 @@
         <div class="qr">
           <img src="<%= imagePath %>" alt="" />
         </div>
+
       </div>
+ 
       <br />
       <div>
         <div>
           <p class="alignleft">
+            <p>
+                <b>Vehicle Number :</b><%= invoiceData.vehicledetails.vechiclenumber %>
+            </p>
             <b>AGENT</b> <br />
             <%= invoiceData.sellerdetails.sellercompanyname %> <br />
             <%= invoiceData.sellerdetails.sellercompanyaddress %> <br />
@@ -269,6 +271,9 @@
 
         <div>
           <p class="alignright">
+            <p>
+                 <b> Driver Number: </b><%= invoiceData.vehicledetails.drivernumber %>
+            </p>
             <b>BUYER</b><br>
             <%= invoiceData.buyerdetails.buyercompanyname %> <br />
             <%= invoiceData.buyerdetails.buyercompanyaddress %> <br />
