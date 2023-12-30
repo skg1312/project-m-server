@@ -247,10 +247,10 @@
             
         </div>
         <div class="right">
-          <b>Dated</b>
+          <b>Date</b>
           : <%=
-          moment(invoiceData.invoicedetails.invoicedate).format("DD/MM/YYYY") %>
-         
+          moment(invoiceData.invoicedetails.invoicedate).format("DD/MM/YYYY") %> &nbsb;
+         <b>Ref.</b>
         </div>
         <div class="qr">
           <img src="<%= imagePath %>" alt="" />
@@ -267,7 +267,7 @@
                <b>Vehicle Number :</b><%= invoiceData.vehicledetails.vechiclenumber %><br />
                 
             
-            <b>AGENT</b> <br />
+            <b>Consignee</b> <br />
             <%= invoiceData.sellerdetails.sellercompanyname %> <br />
             <%= invoiceData.sellerdetails.sellercompanyaddress %> <br />
             GSTIN/UIN : <%= invoiceData.sellerdetails.sellercompanygstno %>
@@ -284,7 +284,7 @@
          
                 <b> Driver Number: </b><%= invoiceData.vehicledetails.drivernumber %><br />
                  
-            <b>BUYER</b><br>
+            <b>BUYER</b> (if other than Consignee)<br>
             <%= invoiceData.buyerdetails.buyercompanyname %> <br />
             <%= invoiceData.buyerdetails.buyercompanyaddress %> <br />
             GSTIN/UIN : <%= invoiceData.buyerdetails.buyercompanygstno %> <br />
