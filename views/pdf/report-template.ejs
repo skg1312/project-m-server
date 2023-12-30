@@ -243,13 +243,15 @@
       
         <div class="left">
           <b>Invoice No</b>
-          : <%= invoiceData.invoicedetails.invoiceno %><br />
+          : <%= invoiceData.invoicedetails.invoiceno %>   &nbsp;&nbsp;
+          <b>Date</b>
+          : <%=
+          moment(invoiceData.invoicedetails.invoicedate).format("DD/MM/YYYY") %>
             
         </div>
         <div class="right">
-          <b>Date</b>
-          : <%=
-          moment(invoiceData.invoicedetails.invoicedate).format("DD/MM/YYYY") %> &nbsp;&nbsp;
+         <b>Load From </b>: Rajastan
+          &nbsp;&nbsp;
          <b>Ref.</b>0000000000
         </div>
         <div class="qr">
