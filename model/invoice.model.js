@@ -62,6 +62,7 @@ const invoiceSchema = new mongoose.Schema({
     boardingdetails: {
         dateofloading: Date,
         watermark: String,  
+        partyref: String,
     },
     loadingdetails: {
         startpoint: String,
