@@ -220,7 +220,7 @@
   <body>
     <div class="invoice">
       <div id="background">
-        <p id="bg-text"><%= invoiceData.boardingdetails.watermark %></p>
+        <p id="bg-text"><%= invoiceData.companydetails.companyname %></p>
       </div>
       <div class="invoice-header">
         <p style="text-align: center; font-weight: bold; font-size: 12px">
@@ -503,8 +503,7 @@
 
         <div class="bottomright">
           <p>Authorized Signature</p>
-<br />
-<%= invoiceData.boardingdetails.watermark %>
+<p><%= invoiceData.companydetails.companyname %></p>
         </div>
         <div class="center">
           <p>This is a computer generated invoice</p>
