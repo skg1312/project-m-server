@@ -122,7 +122,7 @@
       .alignright {
         display: flex;
         margin-left: 55%;
-        margin-top: -17.6%;
+        margin-top: -16%;
         border-bottom: 2px solid black;
         font-size: 9px;
         width: 45%;
@@ -218,6 +218,11 @@
 
       .line-text{
            font-size:9px;
+           margin-top:5px;
+      }
+
+     .table01{
+          margin-top:-3%;
       }
     </style>
   </head>
@@ -303,13 +308,13 @@
       </div>
 
        <div class="line-text"> 
-            <b>Vehicle Number :</b><%= invoiceData.vehicledetails.vechiclenumber %> &nbsp;
-            <b> Driver Number: </b><%= invoiceData.vehicledetails.drivernumber %> &nbsp;
-            <b>Load From </b> : <%= invoiceData.loadingdetails.startpoint %>&nbsp;
+            <b>Vehicle Number :</b><%= invoiceData.vehicledetails.vechiclenumber %> &nbsp;&nbsp;
+            <b> Driver Number: </b><%= invoiceData.vehicledetails.drivernumber %> &nbsp;&nbsp;
+            <b>Load From </b> : <%= invoiceData.loadingdetails.startpoint %>&nbsp;&nbsp;
             <b>Ref.</b> : <%= invoiceData.boardingdetails.partyref %>
        </div>
       
-      <table  style="font-size: 10px; border: 1px solid black">
+      <table class="table01"  style="font-size: 10px; border: 1px solid black">
         <thead>
           <tr>
             <th>S/N</th>
