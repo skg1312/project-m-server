@@ -250,9 +250,9 @@
             
         </div>
         <div class="right">
-         <b>Load From </b>: Rajastan
+         <b>Load From </b> : <%= invoiceData.loadingdetails.startingpoint %>
           &nbsp;&nbsp;
-         <b>Ref.</b>0000000000
+         <b>Ref.</b> : <%= invoiceData.boardingdetails.partyref %>
         </div>
         <div class="qr">
           <img src="<%= imagePath %>" alt="" />
@@ -503,6 +503,8 @@
 
         <div class="bottomright">
           <p>Authorized Signature</p>
+<br />
+<%= invoiceData.boardingdetails.watermark %>
         </div>
         <div class="center">
           <p>This is a computer generated invoice</p>
