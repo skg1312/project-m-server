@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
       buyerdetails,
       vehicledetails,
       consignmentdetails,
-      invoicedetails: { invoiceno: undefined, invoicedate: new Date() }, // Set invoiceno in the schema
+      invoicedetails: { ...invoicedetails, invoiceno: undefined, invoicedate: new Date() }, // Set invoiceno in the schema
       boardingdetails,
       loadingdetails,
     });
