@@ -57,6 +57,7 @@ const invoiceSchema = new mongoose.Schema({
               type: Date,
               default: Date.now,
             },
+              invoicemakername: String,
           },
         
     boardingdetails: {
